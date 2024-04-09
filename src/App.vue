@@ -1,20 +1,21 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: aqua; padding-top: 0;">
-    <div class="container-fluid" style="background-color: aqua; padding-bottom: 50px ">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: darkgray; padding-top: 0;">
+    <div class="container-fluid" style="background-color: darkgray; padding-top: 35px; padding-bottom: 10px ">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">RepairBoyz</a>
+        <a class="navbar-brand" href="#">RepairBoyz</a> |
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Kodu</a>
+
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">E-Pood</a>
+            <a class="nav-link active" aria-current="page" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Remondikalkulaator</a>
+            <a class="nav-link active" aria-current="page" href="#">Remondikalkulaator</a>
           </li>
 
           <form class="d-flex" role="search">
@@ -23,7 +24,7 @@
           </form>
 
         </ul>
-        <button type="button" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-primary">Logi sisse</button>
 
 
       </div>
