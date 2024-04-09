@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: aqua; padding-top: 0;">
+    <div class="container-fluid" style="background-color: aqua; padding-bottom: 50px ">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,8 +31,10 @@
   </nav>
 </template>
 
-<style>
-
+<style scoped>
+/* Add any additional styling here */
 </style>
+
 <script setup>
+/* Add any script setup here */
 </script>
