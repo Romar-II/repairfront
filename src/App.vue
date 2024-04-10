@@ -14,7 +14,7 @@
             <a class="nav-link" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Remondikalkulaator</a>
+            <a class="nav-link" @click="routeToCalculator" href="#">Remondikalkulaator</a>
           </li>
 
           <form class="d-flex" role="search">
@@ -29,10 +29,26 @@
       </div>
     </div>
   </nav>
+  <router-view/>
+
 </template>
 
-<style>
 
-</style>
-<script setup>
+<script>
+import router from "@/router";
+
+export default {
+
+data(){
+  return{
+
+  }
+},
+  methods: {
+    routeToCalculator(){
+      router.push({name: 'repairCalculator'})
+
+    }
+  }
+}
 </script>
