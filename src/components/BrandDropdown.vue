@@ -3,15 +3,39 @@
 <template>
   <select class="form-select" aria-label="Default select example">
     <option selected>Vali automark</option>
-    <option value="1">Bentley</option>
-    <option value="2">Ferrarri</option>
-    <option value="3">Pagani</option>
+    <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{brand.brandName}}</option>
   </select>
 </template>
 
-
 <script>
+import router from "@/router";
+
 export default {
-  name: "CarsDropDown"
+  name: "CarsDropDown",
+  data(){
+    return{
+      brands:[
+        {brandId:0,
+        brandName:''}
+      ]
+
+    }
+  },
+  methods:{
+
+      sendGetBrandRequest() {
+        this.$http.get("/repaircalculator")  // todo: küsi Rainilt
+            .then(response => {
+              this.brandName= response.data
+            })
+            .catch(error => {
+              router.push({name: 'errorRoute'})
+            })
+
+    }
+  },
+  beforeMount() {
+    this.sendGetBrandRequest()
+  }
 }
 </script>

@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RepairCalculatorView from "@/views/RepairCalculatorView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 
 const routes = [
@@ -13,7 +14,12 @@ const routes = [
         path: '/calculator',
         name: 'repairCalculator',
         component: RepairCalculatorView
-    }
+    },
+    {
+        path: '/error',
+        name: 'errorRoute',
+        component: ErrorView
+    },
 
 ]
 

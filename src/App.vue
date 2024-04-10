@@ -5,16 +5,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">RepairBoyz</a>
+        <a class="navbar-brand" href="#">RepairBoyz</a>|
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Kodu</a>
+            <a class="nav-link active" @click="routeToHome" href="#">Kodu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">E-Pood</a>
+            <a class="nav-link active" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="routeToCalculator" href="#">Remondikalkulaator</a>
+            <a class="nav-link active" @click="routeToCalculator" href="#">Remondikalkulaator</a>
           </li>
 
           <form class="d-flex" role="search">
@@ -36,6 +36,7 @@
 
 <script>
 import router from "@/router";
+import HomeView from "@/views/HomeView.vue";
 
 export default {
 
@@ -47,7 +48,9 @@ data(){
   methods: {
     routeToCalculator(){
       router.push({name: 'repairCalculator'})
-
+    },
+    routeToHome(){
+      router.push({name: 'home'})
     }
   }
 }
