@@ -24,7 +24,7 @@ export default {
   methods:{
 
       sendGetBrandRequest() {
-        this.$http.get("/repaircalculator")  // todo: küsi Rainilt
+        this.$http.get("/repair/brand")  // todo: küsi Rainilt
             .then(response => {
               this.brandName= response.data
             })
