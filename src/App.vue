@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+  <nav class="navbar bg-primary navbar-expand-lg" >
+    <div class="container-fluid" >
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,11 +19,11 @@
 
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Otsing" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Otsi</button>
+            <button class="btn btn-outline-dark" type="submit">Otsi</button>
           </form>
 
         </ul>
-        <button type="button" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-primary">Logi sisse</button>
 
 
       </div>
