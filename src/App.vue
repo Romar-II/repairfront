@@ -15,7 +15,8 @@
             <a class="nav-link active" aria-current="page" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Remondikalkulaator</a>
+            <router-link to='/repair-calculator' >Remondikalkulaator</router-link>
+            <router-view> </router-view>
           </li>
 
           <form class="d-flex" role="search">
@@ -29,7 +30,9 @@
 
       </div>
     </div>
+
   </nav>
+
 </template>
 
 <style scoped>
