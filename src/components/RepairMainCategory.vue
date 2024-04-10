@@ -22,7 +22,15 @@
 
 <script>
 export default {
-  name: "RepairMainCategory"
+  name: "RepairMainCategory",
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+
+  }
 }
 </script>
 
