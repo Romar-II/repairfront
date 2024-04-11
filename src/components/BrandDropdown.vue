@@ -1,17 +1,19 @@
 <template>
-  <select v-model="test" @change="emitSelectedBrandId" class="form-select">
+  <select v-model="selectedBrandId" class="form-select" aria-label="Default select example" @change = "emitSelectedBrandId">
     <option selected disabled hidden>Vali automark</option>
     <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{ brand.brandName }}</option>
   </select>
+  {{selectedBrandId}}
 </template>
 
 <script>
+import router from "@/router";
 
 export default {
-  name: "Branddropdown",
+  name: "CarsDropDown",
   data() {
     return {
-      test: '',
+      selectedBrandId:0,
       brands: [
         {
           brandId: 0,
@@ -24,7 +26,7 @@ export default {
   methods: {
 
     sendGetBrandRequest() {
-      this.$http.get("/repair/brand")
+      this.$http.get("/brands")
           .then(response => {
             this.brands = response.data
           })
@@ -34,9 +36,11 @@ export default {
 
     },
     emitSelectedBrandId() {
-      this.test = 'success'
-    }
+      this.$emit(`event-brand-change`, this.selectedBrandId)
+
+    },
   },
+
   beforeMount() {
     this.sendGetBrandRequest()
   }
