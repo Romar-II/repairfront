@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "ModelDropdown"
+  name: "ModelDropdown",
   data(){
     return{
       brandId: 0,
