@@ -10,5 +10,12 @@
 <script>
 export default {
   name: "ModelDropdown"
+  data(){
+    return{
+      brandId: 0,
+
+    }
+  }
+
 }
 </script>
