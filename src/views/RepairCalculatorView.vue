@@ -51,7 +51,6 @@ export default {
     selectBrandId(brandId){
       this.$refs.modelDropdownRef.brandId= brandId
     },
-    tttttt
   }
 
 }
