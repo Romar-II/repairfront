@@ -9,13 +9,25 @@
 
 <script>
 export default {
-  name: "ModelDropdown"
-  data(){
-    return{
+  name: "ModelDropdown",
+  data() {
+    return {
       brandId: 0,
 
     }
-  }
+  },
+  methods: {
 
+    sendGetModelrequest() {
+      this.$http.get(`/repair/model/${this.brandId}`)
+          .then(response => {
+            const responseJSON = response.data
+          })
+          .catch(error => {
+            const errorResponseJSON = error.response.data
+          })
+    }
+
+  }
 }
 </script>
