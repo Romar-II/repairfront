@@ -1,9 +1,6 @@
 <template>
   <select class="form-select" aria-label="Default select example">
     <option selected>Vali mudel</option>
-    <option value="1">MudelAlar</option>
-    <option value="2">MudelStiven</option>
-    <option value="3">MudelMarek</option>
   </select>
 </template>
 
@@ -14,6 +11,10 @@ export default {
     return {
       brandId: 0,
 
+      modelInfo:{
+        modelId:0,
+      }
+
     }
   },
   methods: {
@@ -21,7 +22,7 @@ export default {
     sendGetModelRequest() {
       this.$http.get(`/repair/model/${this.brandId}`)
           .then(response => {
-            const responseJSON = response.data
+            this.modelInfo = response.data
           })
           .catch(error => {
             const errorResponseJSON = error.response.data
