@@ -2,8 +2,8 @@
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col">
-        <BrandDropdown class="mt-5"/>
-        <ModelDropdown class="mt-3"/>
+        <BrandDropdown @event-brand-change ="selectBrandId" class="mt-5"/>
+        <ModelDropdown ref="modelDropdownRef" class="mt-3"/>
         <YearDropdown class="mt-3"/>
         <RepairMainCategory class="mt-5"/>
 
@@ -48,7 +48,10 @@ export default {
     }
   },
   methods:{
-
+    selectBrandId(brandId){
+      this.$refs.modelDropdownRef.brandId= brandId
+    },
+    tttttt
   }
 
 }
