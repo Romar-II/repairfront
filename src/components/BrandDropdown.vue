@@ -1,6 +1,6 @@
 <template>
   <select class="form-select" aria-label="Default select example">
-    <option selected>Vali automark</option>
+    <option selected disabled hidden>Vali automark</option>
         <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{ brand.brandName }}</option>
   </select>
 </template>
