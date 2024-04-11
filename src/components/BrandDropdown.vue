@@ -1,17 +1,17 @@
 <template>
-  <select class="form-select" aria-label="Default select example">
+  <select v-model="test" @change="emitSelectedBrandId" class="form-select">
     <option selected disabled hidden>Vali automark</option>
-        <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{ brand.brandName }}</option>
+    <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{ brand.brandName }}</option>
   </select>
 </template>
 
 <script>
-import router from "@/router";
 
 export default {
-  name: "CarsDropDown",
+  name: "Branddropdown",
   data() {
     return {
+      test: '',
       brands: [
         {
           brandId: 0,
@@ -32,6 +32,9 @@ export default {
             // router.push({name: 'errorRoute'})
           })
 
+    },
+    emitSelectedBrandId() {
+      this.test = 'success'
     }
   },
   beforeMount() {
