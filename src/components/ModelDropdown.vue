@@ -18,7 +18,7 @@ export default {
   },
   methods: {
 
-    sendGetModelrequest() {
+    sendGetModelRequest() {
       this.$http.get(`/repair/model/${this.brandId}`)
           .then(response => {
             const responseJSON = response.data
