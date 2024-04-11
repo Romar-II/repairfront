@@ -20,7 +20,7 @@ export default {
   methods: {
 
     sendGetModelRequest() {
-      this.$http.get(`/repair/model/${this.brandId}`)
+      this.$http.get(`/models/${this.brandId}`)
           .then(response => {
             this.modelInfo = response.data
           })
