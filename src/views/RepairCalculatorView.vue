@@ -50,8 +50,9 @@ export default {
   methods:{
     selectBrandId(brandId){
       this.$refs.modelDropdownRef.brandId= brandId
+      this.$refs.modelDropdownRef.sendGetModelRequest()
     },
-    tttttt
+
   }
 
 }
