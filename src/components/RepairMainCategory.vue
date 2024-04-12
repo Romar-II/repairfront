@@ -26,7 +26,7 @@ export default {
       repairMainCategories:[
         {
           repairMainCategoryId:0,
-          repairMainCategoryName:''
+          repairMainCategoryName:null
         }
       ]
 
@@ -47,12 +47,12 @@ export default {
     },
     handleItemClick(repairMainCategory){
       this.selectedRepairMainCategoryId = repairMainCategory
-      this.emitSelectedRepairMainCategoryId()
+      this.emitSelectedRepairMainCategoryId(repairMainCategory)
     }
   },
-  beforeMount() {
-    this.sendGetMainCategoryRequest()
-  }
+  // beforeMount() {
+  //   this.sendGetMainCategoryRequest()
+  // }
 }
 </script>
 
