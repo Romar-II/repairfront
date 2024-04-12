@@ -1,9 +1,8 @@
 <template>
   <select class="form-select" aria-label="Default select example">
     <option selected>Vali mudel</option>
-    <option value="1">MudelAlar</option>
-    <option value="2">MudelStiven</option>
-    <option value="3">MudelMarek</option>
+    <option v-for="model in models" :value="model.modelId" :key="model.modelId" >{{model.modelName}}</option>
+
   </select>
 </template>
 
@@ -13,7 +12,12 @@ export default {
   data() {
     return {
       brandId: 0,
-
+      models: [
+        {
+          modelId: 0,
+          modelName: ''
+        }
+      ]
     }
   },
   methods: {
@@ -21,10 +25,10 @@ export default {
     sendGetModelRequest() {
       this.$http.get(`/models/${this.brandId}`)
           .then(response => {
-            const responseJSON = response.data
+            this.models = response.data
           })
           .catch(error => {
-            const errorResponseJSON = error.response.data
+            // const errorResponseJSON = error.response.data
           })
     }
 
