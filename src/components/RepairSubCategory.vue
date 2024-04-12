@@ -41,7 +41,7 @@ export default {
 
 
     sendGetRepairSubCategoryRequest() {
-      this.$http.get("/repair/subcategories")
+      this.$http.get(`/repair/subcategories/${this.selectedRepairMainCategoryId}`)
           .then(response => {
             this.repairSubCategory = response.data
           })

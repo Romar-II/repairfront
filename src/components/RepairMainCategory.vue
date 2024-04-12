@@ -22,7 +22,7 @@ export default {
   name: "RepairMainCategory",
   data(){
     return{
-      selectedRepairMainCategoryId:'',
+      selectedRepairMainCategoryId:0,
       repairMainCategories:[
         {
           repairMainCategoryId:0,
@@ -45,9 +45,9 @@ export default {
     emitSelectedRepairMainCategoryId(repairMainCategory){
       this.$emit(`event-category-change`, repairMainCategory)
     },
-    handleItemClick(repairMainCategory){
-      this.selectedRepairMainCategoryId = repairMainCategory //for testing purps
-      this.emitSelectedRepairMainCategoryId(repairMainCategory)
+    handleItemClick(repairMainCategoryId){
+      this.selectedRepairMainCategoryId = repairMainCategoryId //for testing purps
+      this.emitSelectedRepairMainCategoryId(repairMainCategoryId)
     }
   },
   beforeMount() {
