@@ -56,7 +56,11 @@ export default {
     },
     selectRepairMainCategory(selectedCategoryId){
       this.$refs.repairSubCategoryRef.selectedRepairMainCategoryId = selectedCategoryId;
+      this.$refs.repairSubCategoryRef.sendGetRepairSubCategoryRequest();
+
     }
+
+
 
   }
 

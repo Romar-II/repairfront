@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <div class="list-group" id="list-tab" role="tablist">
-        <a  v-for="repairMainCategory in repairMainCategories"  class="list-group-item list-group-item-action" :key="repairMainCategory.repairMainCategoryId"
+        <a v-for="repairMainCategory in repairMainCategories"  class="list-group-item list-group-item-action" :key="repairMainCategory.repairMainCategoryId"
             @click="handleItemClick(repairMainCategory.repairMainCategoryId)" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">{{repairMainCategory.repairMainCategoryName}}</a>
       </div>
     </div>
@@ -22,7 +22,7 @@ export default {
   name: "RepairMainCategory",
   data(){
     return{
-      selectedRepairMainCategoryId:'n',
+      selectedRepairMainCategoryId:'',
       repairMainCategories:[
         {
           repairMainCategoryId:0,
@@ -33,8 +33,8 @@ export default {
     }
   },
   methods:{
-    sendGetMainCategoryRequest: function () {
-      this.$http.get("/maincategory")
+    sendGetMainCategoryRequest() {
+      this.$http.get("/repair/maincategories")
           .then(response => {
             this.repairMainCategories = response.data
           })
@@ -42,17 +42,17 @@ export default {
             // const errorResponseBody = error.response.data
           })
     },
-    emitSelectedRepairMainCategoryId(){
-      this.$emit(`event-category-change`, this.selectedRepairMainCategoryId)
+    emitSelectedRepairMainCategoryId(repairMainCategory){
+      this.$emit(`event-category-change`, repairMainCategory)
     },
     handleItemClick(repairMainCategory){
-      this.selectedRepairMainCategoryId = repairMainCategory
+      this.selectedRepairMainCategoryId = repairMainCategory //for testing purps
       this.emitSelectedRepairMainCategoryId(repairMainCategory)
     }
   },
-  // beforeMount() {
-  //   this.sendGetMainCategoryRequest()
-  // }
+  beforeMount() {
+    this.sendGetMainCategoryRequest()
+  }
 }
 </script>
 

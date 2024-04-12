@@ -22,7 +22,36 @@ export default {
   data(){
     return{
       selectedRepairMainCategoryId:0,
+
+      repairSubCategory: [
+        {
+          repairSubCategoryId: 0,
+          repairSubCategoryName:''
+
+        }
+
+      ]
+
+
+
     }
-  }
+  },
+
+  methods: {
+
+
+    sendGetRepairSubCategoryRequest() {
+      this.$http.get("/repair/subcategories")
+          .then(response => {
+            this.repairSubCategory = response.data
+          })
+          .catch(error => {
+            const errorResponseBody = error.response.data
+          })
+    },
+
+  },
+
+
 }
 </script>
