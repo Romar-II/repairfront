@@ -1,13 +1,17 @@
 
 <template>
   <div class="row">
+    <div>
+      {{selectedRepairMainCategoryId}}
+    </div>
     <div class="col">
-      <div  @change="emitSelectedRepairMainCategoryId" class="list-group" id="list-tab" role="tablist">
-        <a v-model="selectedRepairMainCategoryId" v-for="repairMainCategory in repairMainCategories" class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">{{repairMainCategory.repairMainCategoryName}}</a>
+      <div class="list-group" id="list-tab" role="tablist">
+        <a  v-for="repairMainCategory in repairMainCategories"  class="list-group-item list-group-item-action" :key="repairMainCategory.repairMainCategoryId"
+            @click="handleItemClick(repairMainCategory.repairMainCategoryId)" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">{{repairMainCategory.repairMainCategoryName}}</a>
       </div>
     </div>
 
-    {{selectedRepairMainCategoryId}}
+
 
   </div>
 </template>
@@ -18,7 +22,7 @@ export default {
   name: "RepairMainCategory",
   data(){
     return{
-      selectedRepairMainCategoryId:0,
+      selectedRepairMainCategoryId:'n',
       repairMainCategories:[
         {
           repairMainCategoryId:0,
@@ -40,6 +44,9 @@ export default {
     },
     emitSelectedRepairMainCategoryId(){
       this.$emit(`event-category-change`, this.selectedRepairMainCategoryId)
+    },
+    handleItemClick(repairMainCategory){
+      this.selectedRepairMainCategoryId = repairMainCategory
     }
   },
   beforeMount() {
