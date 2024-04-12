@@ -3,7 +3,6 @@
     <option selected disabled hidden>Vali automark</option>
     <option v-for="brand in brands" :value="brand.brandId" :key="brand.brandId">{{ brand.brandName }}</option>
   </select>
-  {{selectedBrandId}}
 </template>
 
 <script>
