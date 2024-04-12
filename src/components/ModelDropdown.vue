@@ -1,6 +1,6 @@
 <template>
   <select class="form-select" aria-label="Default select example">
-    <option selected>Vali mudel</option>
+    <option selected disabled hidden>Vali mudel</option>
     <option v-for="model in models" :value="model.modelId" :key="model.modelId" >{{model.modelName}}</option>
 
   </select>
