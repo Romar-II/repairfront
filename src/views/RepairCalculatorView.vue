@@ -5,7 +5,7 @@
         <BrandDropdown @event-brand-change ="selectBrandId" class="mt-5"/>
         <ModelDropdown ref="modelDropdownRef" class="mt-3"/>
         <YearDropdown class="mt-3"/>
-        <RepairMainCategory @event-category-change="selectRepairMainCategory();" class="mt-5"/>
+        <RepairMainCategory @event-category-change="selectRepairMainCategory" class="mt-5"/>
 
 
 
@@ -56,7 +56,11 @@ export default {
     },
     selectRepairMainCategory(selectedCategoryId){
       this.$refs.repairSubCategoryRef.selectedRepairMainCategoryId = selectedCategoryId;
+      this.$refs.repairSubCategoryRef.sendGetRepairSubCategoryRequest();
+
     }
+
+
 
   }
 

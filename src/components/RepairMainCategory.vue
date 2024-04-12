@@ -22,7 +22,7 @@ export default {
   name: "RepairMainCategory",
   data(){
     return{
-      selectedRepairMainCategoryId:'n',
+      selectedRepairMainCategoryId:0,
       repairMainCategories:[
         {
           repairMainCategoryId:null,
@@ -33,8 +33,8 @@ export default {
     }
   },
   methods:{
-    sendGetMainCategoryRequest: function () {
-      this.$http.get("/maincategory")
+    sendGetMainCategoryRequest() {
+      this.$http.get("/repair/maincategories")
           .then(response => {
             this.repairMainCategories = response.data
           })
@@ -42,17 +42,17 @@ export default {
             // const errorResponseBody = error.response.data
           })
     },
-    emitSelectedRepairMainCategoryId(){
-      this.$emit(`event-category-change`, this.selectedRepairMainCategoryId)
+    emitSelectedRepairMainCategoryId(repairMainCategory){
+      this.$emit(`event-category-change`, repairMainCategory)
     },
-    handleItemClick(repairMainCategory){
-      this.selectedRepairMainCategoryId = repairMainCategory
-      this.emitSelectedRepairMainCategoryId(repairMainCategory)
+    handleItemClick(repairMainCategoryId){
+      this.selectedRepairMainCategoryId = repairMainCategoryId //for testing purps
+      this.emitSelectedRepairMainCategoryId(repairMainCategoryId)
     }
   },
-  // beforeMount() {
-  //   this.sendGetMainCategoryRequest()
-  // }
+  beforeMount() {
+    this.sendGetMainCategoryRequest()
+  }
 }
 </script>
 
