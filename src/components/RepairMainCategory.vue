@@ -47,6 +47,7 @@ export default {
     },
     handleItemClick(repairMainCategory){
       this.selectedRepairMainCategoryId = repairMainCategory
+      this.emitSelectedRepairMainCategoryId()
     }
   },
   beforeMount() {
