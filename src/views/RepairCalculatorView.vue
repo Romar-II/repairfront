@@ -12,10 +12,10 @@
 
       </div>
       <div class="col">
-        <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef" class="mt-4"/>
+        <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef" class="mt-5"/>
       </div>
       <div class="col">
-        <RepairItemCategory ref="repairItemCategory" class="mt-4"/>
+        <RepairItemCategory ref="repairItemCategory" class="mt-5"/>
       </div>
       <div class="col">
         Column
