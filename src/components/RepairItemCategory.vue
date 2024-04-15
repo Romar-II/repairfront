@@ -10,7 +10,7 @@
            @click="handleItemClick(repairItemCategory.repairItemCategoryId)" id="list-settings-list"
            data-bs-toggle="list"
            href="#list-settings" role="tab"
-           aria-controls="list-settings">{{ repairItemCategory.repairItemCategoryName }}</a>
+           aria-controls="list-settings">{{repairItemCategory.repairItemCategoryName}}</a>
       </div>
     </div>
 
