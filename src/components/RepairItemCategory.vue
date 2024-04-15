@@ -31,8 +31,8 @@ export default {
           repairItemCategoryId: 0,
           repairItemCategoryName: ''
 
-        },
-          ]
+        }
+      ]
     }
 
   },
