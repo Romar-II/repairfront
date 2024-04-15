@@ -15,7 +15,7 @@
         <RepairSubCategory ref="repairSubCategoryRef"/>
       </div>
       <div class="col">
-        Column
+        <RepairItemCategory ref="repairItemCategory"/>
       </div>
       <div class="col">
         Column
@@ -35,12 +35,13 @@ import ModelDropdown from "@/components/ModelDropdown.vue";
 import YearDropdown from "@/components/YearDropdown.vue";
 import RepairMainCategory from "@/components/RepairMainCategory.vue";
 import RepairSubCategory from "@/components/RepairSubCategory.vue";
+import RepairItemCategory from "@/components/RepairItemCategory.vue";
 
 
 
 export default {
 
-  components: {RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown,RepairMainCategory},
+  components: {RepairItemCategory, RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown,RepairMainCategory},
   name: 'RepairCalculatorView',
   data(){
     return{
@@ -59,6 +60,8 @@ export default {
       this.$refs.repairSubCategoryRef.sendGetRepairSubCategoryRequest();
 
     }
+
+
 
 
 
