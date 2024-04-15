@@ -11,7 +11,7 @@
             <a class="nav-link active" @click="routeToHome" href="#">Kodu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">E-Pood</a>
+            <a class="nav-link active" @click="routeToOnlineShopView" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" @click="routeToCalculator" href="#">Remondikalkulaator</a>
@@ -48,6 +48,9 @@ data(){
   methods: {
     routeToCalculator(){
       router.push({name: 'repairCalculator'})
+    },
+    routeToOnlineShopView(){
+      router.push({name:'onlineShopRoute'})
     },
     routeToHome(){
       router.push({name: 'home'})
