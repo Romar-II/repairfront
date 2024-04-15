@@ -6,8 +6,8 @@
     </div>
     <div class="col">
       <div class="list-group" id="list-tab" role="tablist">
-        <a  v-for="repairMainCategory in repairMainCategories"  class="list-group-item list-group-item-action" :key="repairMainCategory.repairMainCategoryId"
-            @click="handleItemClick(repairMainCategory.repairMainCategoryId)" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">{{repairMainCategory.repairMainCategoryName}}</a>
+        <a  v-if="selectedRepairMainCategoryId>0" v-for="repairSubCategory in repairSubCategories"  class="list-group-item list-group-item-action" :key="repairSubCategories.repairSubCategoryId"
+            @click="handleItemClick(repairSubCategory.repairSubCategoryId)" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">{{repairSubCategory.repairSubCategoryName}}</a>
       </div>
     </div>
 
@@ -23,7 +23,7 @@ export default {
     return{
       selectedRepairMainCategoryId:0,
 
-      repairSubCategory: [
+      repairSubCategories: [
         {
           repairSubCategoryId: 0,
           repairSubCategoryName:''
@@ -43,14 +43,20 @@ export default {
     sendGetRepairSubCategoryRequest() {
       this.$http.get(`/repair/subcategories/${this.selectedRepairMainCategoryId}`)
           .then(response => {
-            this.repairSubCategory = response.data
+            this.repairSubCategories = response.data
           })
           .catch(error => {
             const errorResponseBody = error.response.data
           })
     },
 
+    handleItemClick() {
+
+    },
+
   },
+
+
 
 
 }
