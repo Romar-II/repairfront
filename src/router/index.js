@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RepairCalculatorView from "@/views/RepairCalculatorView.vue";
 import ErrorView from "@/views/ErrorView.vue";
+import OnlineShopView from "@/views/OnlineShopView.vue";
 
 
 const routes = [
@@ -9,6 +10,11 @@ const routes = [
         path: '/',
         name: 'home',
         component: HomeView
+    },
+    {
+        path: '/online-shop',
+        name: 'onlineShopRoute',
+        component: OnlineShopView
     },
     {
         path: '/calculator',
