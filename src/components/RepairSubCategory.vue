@@ -50,7 +50,12 @@ export default {
           })
     },
 
-    handleItemClick() {
+    emitSelectedRepairSubCategoryId(repairSubCategory){
+      this.$emit(`event-sub-category-change`, repairSubCategory)
+    },
+
+    handleItemClick(repairSubCategoryId) {
+      this.emitSelectedRepairSubCategoryId(repairSubCategoryId)
 
     },
 
