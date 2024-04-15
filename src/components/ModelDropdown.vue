@@ -11,6 +11,7 @@ export default {
   name: "ModelDropdown",
   data() {
     return {
+      selectedModelId:0,
       brandId: 0,
       models: [
         {
@@ -23,7 +24,7 @@ export default {
   methods: {
 
     sendGetModelRequest() {
-      this.$http.get(`/models/${this.brandId}`)
+      this.$http.get(`/models/${this.selectedModelId()}`)
           .then(response => {
             this.models = response.data
           })

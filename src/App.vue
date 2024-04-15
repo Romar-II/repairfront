@@ -11,7 +11,7 @@
             <a class="nav-link active" @click="routeToHome" href="#">Kodu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">E-Pood</a>
+            <a class="nav-link active" @click="routeToShop" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" @click="routeToCalculator" href="#">Remondikalkulaator</a>
@@ -51,6 +51,9 @@ data(){
     },
     routeToHome(){
       router.push({name: 'home'})
+    },
+    routeToShop(){
+      router.push({name:'onlineShop'})
     }
   }
 }
