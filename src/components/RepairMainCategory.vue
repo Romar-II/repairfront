@@ -2,7 +2,7 @@
 <template>
   <div class="row">
     <div>
-      {{selectedRepairMainCategoryId}}
+
     </div>
     <div class="col">
       <div class="list-group" id="list-tab" role="tablist">
