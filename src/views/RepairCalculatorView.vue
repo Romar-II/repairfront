@@ -3,8 +3,8 @@
     <div class="row justify-content-center">
       <div class="col">
         <BrandDropdown @event-brand-change ="selectBrandId" class="mt-5"/>
-        <ModelDropdown ref="modelDropdownRef" class="mt-3"/>
-        <YearDropdown class="mt-3"/>
+        <ModelDropdown @event-model-change = "selectedModelId" ref="modelDropdownRef" class="mt-3"/>
+        <YearDropdown  ref="yearDropdownRef" class="mt-3"/>
         <RepairMainCategory @event-category-change="selectRepairMainCategory();" class="mt-5"/>
 
 
@@ -51,6 +51,10 @@ export default {
     selectBrandId(brandId){
       this.$refs.modelDropdownRef.brandId= brandId
       this.$refs.modelDropdownRef.sendGetModelRequest()
+    },
+    selectedModelId(modelId){
+      this.$refs.yearDropdownRef.selectedModelId=modelId
+      this.$refs.yearDropdownRef.sendGetYearRequest()
     },
     selectRepairMainCategory(selectedCategoryId){
       this.$refs.repairSubCategoryRef.selectedRepairMainCategoryId = selectedCategoryId;

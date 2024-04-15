@@ -11,7 +11,7 @@ export default {
   name: "ModelDropdown",
   data() {
     return {
-      selectedModelId: 0,
+      brandId: 0,
       models: [
         {
           modelId: 0,

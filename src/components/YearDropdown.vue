@@ -14,6 +14,7 @@ export default {
   name: "YearDropdown",
   data() {
     return {
+      selectedModelId:0,
       yearId: 0,
       years: [
         {
