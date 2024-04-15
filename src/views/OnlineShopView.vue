@@ -4,6 +4,7 @@
       <div class="col-5 mt-5">
         <div class="row">
           <div class="col-4">
+            <OnlineShopAccordion/>
 
           </div>
         </div>
@@ -17,7 +18,10 @@
 </template>
 
 <script>
+import OnlineShopAccordion from "@/components/OnlineShopAccordion.vue";
+
 export default {
-  name: "OnlineShopView"
+  name: "OnlineShopView",
+  components: {OnlineShopAccordion}
 }
 </script>
