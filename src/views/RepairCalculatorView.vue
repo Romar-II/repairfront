@@ -27,8 +27,6 @@
 </template>
 
 
-
-
 <script>
 import BrandDropdown from "@/components/BrandDropdown.vue";
 import ModelDropdown from "@/components/ModelDropdown.vue";

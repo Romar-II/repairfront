@@ -1,5 +1,5 @@
 <template>
-  <select class="form-select" aria-label="Default select example">
+  <select v-model="selectedModelId" class="form-select" aria-label="Default select example" @change = "emitSelectedModelId">
     <option selected disabled hidden>Vali mudel</option>
     <option v-for="model in models" :value="model.modelId" :key="model.modelId" >{{model.modelName}}</option>
 
@@ -11,7 +11,7 @@ export default {
   name: "ModelDropdown",
   data() {
     return {
-      brandId: 0,
+      selectedModelId: 0,
       models: [
         {
           modelId: 0,
@@ -30,8 +30,12 @@ export default {
           .catch(error => {
             // const errorResponseJSON = error.response.data
           })
-    }
+    },
+    emitSelectedModelId() {
+      this.$emit(`event-model-change`, this.selectedModelId)
 
-  }
+    },
+
+  },
 }
 </script>

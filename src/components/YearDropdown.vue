@@ -25,8 +25,8 @@ export default {
   },
   methods: {
 
-    sendGetModelRequest() {
-      this.$http.get(`/years/${this.brandId}`)//kas siin ka brandID või ei ole sellel sõltuvust?
+    sendGetYearRequest() {
+      this.$http.get(`/years/${this.modelId}`)//kas siin ka brandID või ei ole sellel sõltuvust?
           .then(response => {
             this.years = response.data
           })
