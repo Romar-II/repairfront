@@ -1,17 +1,16 @@
 <template>
   <div class="col-4">
 
-    <div v-for="mainCategory in mainCategories" :key="mainCategory.categoryId" class="list-group" >
-      <button type="button" class="list-group-item" @click="handleMainCategoryClick(mainCategory.categoryId)" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
+    <div v-for="(mainCategory, index) in mainCategories" :key="mainCategory.categoryId" class="list-group" >
+      <button type="button" class="list-group-item" @click="handleMainCategoryClick(mainCategory.categoryId, index)" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
         {{ mainCategory.categoryName }}
       </button>
       <div v-if="mainCategory.isCollapsed">
-        <button v-for="subCategory in mainCategory.subCategories" @change="selectSearchCriteria(subCategory.subCategoryId)" :key="subCategory.subCategoryId" type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
+        <button v-for="(subCategory, index) in mainCategory.subCategories" @change="selectSearchCriteria(subCategory.subCategoryId, index)" :key="subCategory.subCategoryId" type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
           {{ subCategory.subCategoryName }}
         </button>
       </div>
     </div>
-    {{mainCategories}}
     {{searchCriteria.mainCategoryId}}
     {{searchCriteria.subCategoryId}}
     {{mainCategories.categoryId}}
@@ -46,12 +45,12 @@ export default {
     };
   },
   methods: {
-    handleMainCategoryClick(categoryId){
-      this.toggleCollapse(categoryId)
+    handleMainCategoryClick(categoryId, index){
+      this.toggleCollapse(index)
       this.selectSearchCriteria(categoryId)
     },
     toggleCollapse(index) {
-      this.mainCategories[index-1].isCollapsed = !this.mainCategories[index-1].isCollapsed;
+      this.mainCategories[index].isCollapsed = !this.mainCategories[index].isCollapsed;
     },
     sendCategoriesRequest() {
       this.$http.get("/shop/categories")
