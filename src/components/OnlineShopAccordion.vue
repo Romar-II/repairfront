@@ -1,26 +1,30 @@
-
 <template>
   <div class="col-4">
+
     <div v-for="mainCategory in mainCategories" class="list-group">
-      <button type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off" @click="toggleCollapse">
-        Engine
+      <button type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off"
+              @click="toggleCollapse">
+        {{ mainCategory.categoryName }}
       </button>
       <div v-if="mainCategory.isCollapsed">
-        <button v-for="subCategory in mainCategory.subCategories" type="button" class="list-group-item">Oil</button>
+        <button v-for="subCategory in mainCategory.subCategories" type="button" class="list-group-item">
+          {{ subCategory.subCategoryName }}
+        </button>
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isCollapsed: false,
       mainCategories: [
         {
-          mainCategoryId: 0,
-          mainCategoryName: '',
+          categoryId: 0,
+          categoryName: '',
           isCollapsed: true,
           subCategories: [
             {
@@ -29,24 +33,31 @@ export default {
             }
           ]
         }
-
       ]
 
     };
   },
   methods: {
-      toggleCollapse() {
-        this.isCollapsed = !this.isCollapsed;
-      },
-    sendCategoriesRequest()
-    {
+    toggleCollapse() {
+      this..isCollapsed = !this.mainCategories.isCollapsed;
+    },
+    sendCategoriesRequest() {
       this.$http.get("/shop/categories")
           .then(response => {
             this.mainCategories = response.data
+            this.updateMainCategories()
           })
           .catch(error => {
             // const errorResponseBody = error.response.data
           })
+    },
+    updateMainCategories() {
+      this.mainCategories = this.mainCategories.map(function (category) {
+        return {
+          ...category,
+          isCollapsed: false
+        }
+      })
     }
 
   },
