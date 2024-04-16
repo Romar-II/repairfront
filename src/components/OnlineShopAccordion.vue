@@ -1,20 +1,16 @@
 <template>
   <div class="col-4">
-
-    <div v-for="mainCategory in mainCategories" class="list-group">
-      <button type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off"
-              @click="toggleCollapse">
+    <div v-for="(mainCategory, index) in mainCategories" :key="index" class="list-group" >
+      <button type="button" class="list-group-item" @click="toggleCollapse(index)" @change="selectSearchCriteria(mainCategory.categoryId)" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
         {{ mainCategory.categoryName }}
       </button>
       <div v-if="mainCategory.isCollapsed">
-        <button v-for="subCategory in mainCategory.subCategories" type="button" class="list-group-item">
+        <button v-for="(subCategory, subIndex) in mainCategory.subCategories" :key="subIndex" type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
           {{ subCategory.subCategoryName }}
         </button>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -33,14 +29,19 @@ export default {
             }
           ]
         }
+      ],
+      searchCriteria: [
+        {
+          mainCategoryId:0,
+          subCategoryId:0
+        }
       ]
-
     };
   },
   methods: {
-    // toggleCollapse() {
-    //   this.isCollapsed = !this.mainCategories.isCollapsed;
-    // },
+    toggleCollapse(index) {
+      this.mainCategories[index].isCollapsed = !this.mainCategories[index].isCollapsed;
+    },
     sendCategoriesRequest() {
       this.$http.get("/shop/categories")
           .then(response => {
@@ -58,6 +59,9 @@ export default {
           isCollapsed: false
         }
       })
+    },
+    selectSearchCriteria(){
+
     }
 
   },
