@@ -11,10 +11,8 @@
         </button>
       </div>
     </div>
-    {{searchCriteria.mainCategoryId}}
-    {{searchCriteria.subCategoryId}}
-    {{mainCategories.categoryId}}
     {{testmuutuja}}
+
   </div>
 </template>
 
