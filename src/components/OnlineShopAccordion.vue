@@ -38,9 +38,9 @@ export default {
     };
   },
   methods: {
-    toggleCollapse() {
-      this..isCollapsed = !this.mainCategories.isCollapsed;
-    },
+    // toggleCollapse() {
+    //   this.isCollapsed = !this.mainCategories.isCollapsed;
+    // },
     sendCategoriesRequest() {
       this.$http.get("/shop/categories")
           .then(response => {
