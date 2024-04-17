@@ -1,22 +1,26 @@
 <template>
   <div class="col-4" >
 
-    <div v-for="(mainCategory, index) in mainCategories" :key="mainCategory.categoryId" class="list-group">
-      <button type="button" class="list-group-item list-group-item-action" @click="handleMainCategoryClick(mainCategory.categoryId, index)"
-              data-bs-toggle="button" aria-pressed="false" autocomplete="off">
-        {{ mainCategory.categoryName }}
-      </button>
-      <div v-if="mainCategory.isCollapsed">
-        <button v-for="(subCategory, index) in mainCategory.subCategories"
-                @change="handleSubCategoryClick(subCategory.subCategoryId, index)"
-                :key="subCategory.subCategoryId" type="button" class="list-group-item" data-bs-toggle="button"
-                aria-pressed="false" autocomplete="off">
-          {{ subCategory.subCategoryName }}
+    <div class="col">
+      <div class="list-group" id="list-tab" role="tablist">
+        <button v-for="(mainCategory1, index) in mainCategories"  class="list-group-item list-group-item-action" :key="mainCategory1.categoryId"
+           @click="handleMainCategoryClick(mainCategory1.categoryId, index)" id="list-settings-list" data-bs-toggle="list"
+           href="#list-settings" role="tab" aria-controls="list-settings">{{mainCategory1.categoryName}}
+          <div v-if="mainCategory1.isCollapsed">
+            <button v-for="(subCategory, index) in mainCategory1.subCategories"
+                    @change="handleSubCategoryClick(subCategory.subCategoryId, index)"
+                    :key="subCategory.subCategoryId" type="button" class="list-group-item list-group-item-action" data-bs-toggle="list"
+                    aria-pressed="false" autocomplete="off">
+              {{ subCategory.subCategoryName }}
+            </button>
+          </div>
         </button>
+
       </div>
-    </div>
+
     {{ testmuutuja }}
 
+  </div>
   </div>
 </template>
 
@@ -38,17 +42,36 @@ export default {
           ]
         }
       ],
-
+      products:[
+        {
+          productId:0,
+          productName:'',
+          productPrice:0.00,
+          productDescription:'',
+          productImageData:'',
+        }
+      ]
     };
   },
   methods: {
     handleSubCategoryClick(subCategoryId, index) {
+
     },
     handleMainCategoryClick(categoryId, index) {
       this.toggleCollapse(index)
     },
     toggleCollapse(index) {
+      this.updateMainCategories()
       this.mainCategories[index].isCollapsed = !this.mainCategories[index].isCollapsed;
+    },
+    sendproductRequest() {
+      this.$http.get("/some/path")
+          .then(response => {
+            const responseBody = response.data
+          })
+          .catch(error => {
+            const errorResponseBody = error.response.data
+          })
     },
     sendCategoriesRequest() {
       this.$http.get("/shop/categories")
@@ -68,23 +91,6 @@ export default {
         }
       })
     },
-    selectSearchCriteria(categoryId, subCategoryId) {
-      this.searchCriteria.mainCategoryId = categoryId
-      this.searchCriteria.subCategories = subCategoryId
-      this.sendTestStuff(categoryId)
-      this.sendTestStuff(subCategoryId)
-
-    },
-    sendTestStuff(categoryId) {
-      this.$http.get(`/some/${categoryId}`)
-          .then(response => {
-            const responseBody = response.data
-          })
-          .catch(error => {
-            // const errorResponseBody = error.response.data
-          })
-    },
-
   },
   beforeMount: function () {
     this.sendCategoriesRequest()
