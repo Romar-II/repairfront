@@ -25,7 +25,7 @@ export default {
       selectedRepairMainCategoryId:0,
       repairMainCategories:[
         {
-          repairMainCategoryId:0,
+          repairMainCategoryId:null,
           repairMainCategoryName:null
         }
       ]
