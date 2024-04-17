@@ -1,11 +1,11 @@
 <template>
-  <div class="container text-center" v-if="repairItemCategories.repairItemId>0">
-    <div class="row">
-      <div class="col justify-content-center even-row-color " >
-        Toode
+  <div class="container text-center"  v-if="repairItemCategories.repairItemId>0">
+    <div class="row " >
+      <div class="col justify-content-center even-row-color list-group-item list-group-item-action " >
+        <div class="list-group">Toode</div>
         <div>{{repairItemCategories.repairItemCategoryName}}</div>
       </div>
-      <div class="col justify-content-center">
+      <div class="col">
         Hind
         <div class="justify-content-center">{{repairItemCategories.price}}</div>
       </div>
