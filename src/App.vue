@@ -1,7 +1,8 @@
 <template>
-  <nav class="navbar bg-primary navbar-expand-lg" >
-    <div class="container-fluid" >
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar bg-primary navbar-expand-lg">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+              aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -11,7 +12,7 @@
             <a class="nav-link active" @click="routeToHome" href="#">Kodu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" @click="routeToShop" href="#">E-Pood</a>
+            <a class="nav-link active" @click="routeToOnlineShopView" href="#">E-Pood</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" @click="routeToCalculator" href="#">Remondikalkulaator</a>
@@ -36,24 +37,21 @@
 
 <script>
 import router from "@/router";
-import HomeView from "@/views/HomeView.vue";
 
 export default {
 
-data(){
-  return{
-
-  }
-},
+  data() {
+    return {}
+  },
   methods: {
-    routeToCalculator(){
+    routeToCalculator() {
       router.push({name: 'repairCalculator'})
     },
-    routeToHome(){
-      router.push({name: 'home'})
+    routeToOnlineShopView() {
+      router.push({name: 'onlineShopRoute'})
     },
-    routeToShop(){
-      router.push({name:'onlineShop'})
+    routeToHome() {
+      router.push({name: 'home'})
     }
   }
 }

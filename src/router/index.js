@@ -13,7 +13,7 @@ const routes = [
     },
     {
         path: '/online-shop',
-        name: 'onlineShop',
+        name: 'onlineShopRoute',
         component: OnlineShopView
     },
     {
