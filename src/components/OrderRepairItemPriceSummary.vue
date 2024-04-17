@@ -1,16 +1,16 @@
 <template>
   <div class="container text-center" v-if="repairItemCategories.repairItemId>0">
     <div class="row">
-      <div class="col justify-content-center" >
+      <div class="col justify-content-center even-row-color " >
         Toode
-        <tr>{{repairItemCategories.repairItemCategoryName}}</tr>
+        <div>{{repairItemCategories.repairItemCategoryName}}</div>
       </div>
       <div class="col justify-content-center">
         Hind
-        <tr class="justify-content-center">{{repairItemCategories.price}}</tr>
+        <div class="justify-content-center">{{repairItemCategories.price}}</div>
       </div>
     </div>
-    <button class="mt-5 btn btn-primary" type="submit">Osta</button>
+    <button class="mt-5 btn btn-primary" type="submit">Lisa korvi</button>
   </div>
 </template>
 
