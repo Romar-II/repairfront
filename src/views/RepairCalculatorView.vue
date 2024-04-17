@@ -7,18 +7,15 @@
         <YearDropdown class="mt-3"/>
         <RepairMainCategory @event-category-change="selectRepairMainCategory" class="mt-5"/>
 
-
-
-
       </div>
       <div class="col">
         <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef" class="mt-5"/>
       </div>
       <div class="col">
-        <RepairItemCategory ref="repairItemCategory" class="mt-5"/>
+        <RepairItemCategory ref="repairItemCategoryRef" class="mt-5"/>
       </div>
       <div class="col">
-        Column
+        <OrderRepairItemPriceSummary ref="OrderRepairItemPriceSummaryRef" class="mt-5"/>
       </div>
     </div>
   </div>
@@ -36,12 +33,15 @@ import YearDropdown from "@/components/YearDropdown.vue";
 import RepairMainCategory from "@/components/RepairMainCategory.vue";
 import RepairSubCategory from "@/components/RepairSubCategory.vue";
 import RepairItemCategory from "@/components/RepairItemCategory.vue";
+import OrderRepairItemPriceSummary from "@/components/OrderRepairItemPriceSummary.vue";
 
 
 
 export default {
 
-  components: {RepairItemCategory, RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown,RepairMainCategory},
+  components: {
+    OrderRepairItemPriceSummary,
+    RepairItemCategory, RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown,RepairMainCategory},
   name: 'RepairCalculatorView',
   data(){
     return{
@@ -62,8 +62,8 @@ export default {
     },
 
     selectRepairSubCategory(selectedSubCategoryId) {
-      this.$refs.repairItemCategory.selectedRepairSubCategoryId = selectedSubCategoryId;
-      this.$refs.repairItemCategory.sendGetRepairItemCategoryRequest();
+      this.$refs.repairItemCategoryRef.selectedRepairSubCategoryId = selectedSubCategoryId;
+      this.$refs.repairItemCategoryRef.sendGetRepairItemCategoryRequest();
 
 
 
