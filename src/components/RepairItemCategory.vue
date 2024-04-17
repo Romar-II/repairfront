@@ -1,13 +1,12 @@
 <template>
   <div class="row">
     <div>
-
     </div>
     <div class="col">
       <div class="list-group" id="list-tab" role="tablist">
         <a v-if="selectedRepairSubCategoryId>0" v-for="repairItemCategory in repairItemCategories"
-           class="list-group-item list-group-item-action" :key="repairItemCategories.repairItemCategoryId"
-           @click="handleItemClick(repairItemCategory.repairItemCategoryId)" id="list-settings-list"
+           class="list-group-item list-group-item-action" :key="repairItemCategories.repairItemId"
+           @click="handleItemClick(repairItemCategory)" id="list-settings-list"
            data-bs-toggle="list"
            href="#list-settings" role="tab"
            aria-controls="list-settings">{{repairItemCategory.repairItemCategoryName}}</a>
@@ -28,7 +27,7 @@ export default {
 
       repairItemCategories: [
         {
-          repairItemCategoryId: 0,
+          repairItemId: 0,
           repairItemCategoryName: ''
 
         }
@@ -48,7 +47,13 @@ export default {
             const errorResponseBody = error.response.data
           })
     },
-    handleItemClick() {
+
+    emitSelectedRepairItemCategoryId(repairItemCategory) {
+      this.$emit(`event-repair-item-change`,repairItemCategory)
+    },
+
+    handleItemClick(repairItemCategory) {
+      this.emitSelectedRepairItemCategoryId(repairItemCategory)
 
     },
   },

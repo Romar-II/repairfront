@@ -12,10 +12,10 @@
         <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef" class="mt-5"/>
       </div>
       <div class="col">
-        <RepairItemCategory ref="repairItemCategoryRef" class="mt-5"/>
+        <RepairItemCategory @event-repair-item-change="selectRepairItemCategory" ref="repairItemCategoryRef" class="mt-5"/>
       </div>
       <div class="col">
-        <OrderRepairItemPriceSummary ref="OrderRepairItemPriceSummaryRef" class="mt-5"/>
+        <OrderRepairItemPriceSummary ref="orderRepairItemPriceSummaryRef" class="mt-5"/>
       </div>
     </div>
   </div>
@@ -66,6 +66,11 @@ export default {
       this.$refs.repairItemCategoryRef.sendGetRepairItemCategoryRequest();
 
 
+
+    },
+
+    selectRepairItemCategory(selectedRepairItem) {
+      this.$refs.orderRepairItemPriceSummaryRef.repairItemCategories = selectedRepairItem
 
     },
 
