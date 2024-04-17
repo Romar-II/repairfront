@@ -1,9 +1,16 @@
 <template>
-  <div>
-    <div v-if="repairItemCategories.repairItemId>0" class="list-group-item list-group-item-action" aria-controls="list-settings" >
-      {{repairItemCategories.repairItemCategoryName}}
-      {{repairItemCategories.price}}
+  <div class="container text-center" v-if="repairItemCategories.repairItemId>0">
+    <div class="row">
+      <div class="col justify-content-center" >
+        Toode
+        <tr>{{repairItemCategories.repairItemCategoryName}}</tr>
+      </div>
+      <div class="col justify-content-center">
+        Hind
+        <tr class="justify-content-center">{{repairItemCategories.price}}</tr>
+      </div>
     </div>
+    <button class="mt-5 btn btn-primary" type="submit">Osta</button>
   </div>
 </template>
 
