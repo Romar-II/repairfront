@@ -1,7 +1,8 @@
 <template>
-  <nav class="navbar bg-primary navbar-expand-lg" >
-    <div class="container-fluid" >
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar bg-primary navbar-expand-lg">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+              aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -36,23 +37,20 @@
 
 <script>
 import router from "@/router";
-import HomeView from "@/views/HomeView.vue";
 
 export default {
 
-data(){
-  return{
-
-  }
-},
+  data() {
+    return {}
+  },
   methods: {
-    routeToCalculator(){
+    routeToCalculator() {
       router.push({name: 'repairCalculator'})
     },
-    routeToOnlineShopView(){
-      router.push({name:'onlineShopRoute'})
+    routeToOnlineShopView() {
+      router.push({name: 'onlineShopRoute'})
     },
-    routeToHome(){
+    routeToHome() {
       router.push({name: 'home'})
     }
   }
