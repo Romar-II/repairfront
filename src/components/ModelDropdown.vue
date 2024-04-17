@@ -24,7 +24,7 @@ export default {
   methods: {
 
     sendGetModelRequest() {
-      this.$http.get(`/models/${this.selectedModelId}`)
+      this.$http.get(`/models/${this.brandId}`)
           .then(response => {
             this.models = response.data
           })
