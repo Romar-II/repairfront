@@ -1,17 +1,21 @@
 <template>
-  <div class="col-4">
+  <div class="col-4" >
 
-    <div v-for="(mainCategory, index) in mainCategories" :key="mainCategory.categoryId" class="list-group" >
-      <button type="button" class="list-group-item" @click="handleMainCategoryClick(mainCategory.categoryId, index)" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
+    <div v-for="(mainCategory, index) in mainCategories" :key="mainCategory.categoryId" class="list-group">
+      <button type="button" class="list-group-item list-group-item-action" @click="handleMainCategoryClick(mainCategory.categoryId, index)"
+              data-bs-toggle="button" aria-pressed="false" autocomplete="off">
         {{ mainCategory.categoryName }}
       </button>
       <div v-if="mainCategory.isCollapsed">
-        <button v-for="(subCategory, index) in mainCategory.subCategories" @change="selectSearchCriteria(subCategory.subCategoryId, index)" :key="subCategory.subCategoryId" type="button" class="list-group-item" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
+        <button v-for="(subCategory, index) in mainCategory.subCategories"
+                @change="handleSubCategoryClick(subCategory.subCategoryId, index)"
+                :key="subCategory.subCategoryId" type="button" class="list-group-item" data-bs-toggle="button"
+                aria-pressed="false" autocomplete="off">
           {{ subCategory.subCategoryName }}
         </button>
       </div>
     </div>
-    {{testmuutuja}}
+    {{ testmuutuja }}
 
   </div>
 </template>
@@ -20,7 +24,7 @@
 export default {
   data() {
     return {
-      testmuutuja:0,
+      testmuutuja: 0,
       mainCategories: [
         {
           categoryId: 0,
@@ -34,18 +38,14 @@ export default {
           ]
         }
       ],
-      searchCriteria: [
-        {
-          mainCategoryId:1,
-          subCategoryId:1
-        }
-      ]
+
     };
   },
   methods: {
-    handleMainCategoryClick(categoryId, index){
+    handleSubCategoryClick(subCategoryId, index) {
+    },
+    handleMainCategoryClick(categoryId, index) {
       this.toggleCollapse(index)
-      this.selectSearchCriteria(categoryId)
     },
     toggleCollapse(index) {
       this.mainCategories[index].isCollapsed = !this.mainCategories[index].isCollapsed;
@@ -68,9 +68,9 @@ export default {
         }
       })
     },
-    selectSearchCriteria(categoryId, subCategoryId){
+    selectSearchCriteria(categoryId, subCategoryId) {
       this.searchCriteria.mainCategoryId = categoryId
-      this.searchCriteria.subCategories=subCategoryId
+      this.searchCriteria.subCategories = subCategoryId
       this.sendTestStuff(categoryId)
       this.sendTestStuff(subCategoryId)
 
