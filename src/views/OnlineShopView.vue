@@ -1,27 +1,23 @@
 <template>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-5 mt-5">
-        <div class="row">
-          <div class="col-4">
-            <OnlineShopAccordion/>
 
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        grid toodetest
-      </div>
-
+  <div class="row">
+    <div class="col-4 ms-5 mt-5">
+      <OnlineShopAccordion/>
+    </div>
+    <div class="col">
+      <ProductsDisplay/>
     </div>
   </div>
+
+
 </template>
 
 <script>
 import OnlineShopAccordion from "@/components/OnlineShopAccordion.vue";
+import ProductsDisplay from "@/components/ProductsDisplay.vue";
 
 export default {
   name: "OnlineShopView",
-  components: {OnlineShopAccordion}
+  components: {ProductsDisplay, OnlineShopAccordion}
 }
 </script>
