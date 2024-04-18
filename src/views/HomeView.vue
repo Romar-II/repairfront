@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="text-center">
+
+    <div class="col">
+      <h1>Remondileht</h1>
+    </div>
+    <div class="col-5">
+  <img src="../assets/remont.png" class="rounded mx-auto d-block" alt="...">
+    </div>
 
   </div>
-
-
-
-  <img src="../assets/remont.png" class="rounded float-start" alt="...">
-  <img src="../assets/parandus1.png" class="rounded float-end" alt="...">
 
 </template>
 
