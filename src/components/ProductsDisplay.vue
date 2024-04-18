@@ -1,7 +1,6 @@
 <template>
 
-  <div class="d-flex justify-content-end me-3 mt-3
-">
+  <div class="d-flex justify-content-end me-3 mt-3">
     <button class="btn btn-secondary btn-sm dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Mitu tk korraga
     </button>
@@ -9,13 +8,25 @@
       ...
     </ul>
   </div>
-  <div class="container text-center">
-  <div class="row">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{ products }}
+  <div class=" row container text-center">
+    <div v-for="product in products" class="col" :key="product.productId">
+      <div>
+        <div>
+          <img src="../assets/default-product.30484205.png" height="200" width="200"/>
+        </div>
+        <div>
+          {{ product.productImageData }}
+        </div>
+        <div>
+          {{ product.productName }}
+        </div>
+        <div>
+          {{ product.productDescription }}
+        </div>
+        <div>
+          Hind: {{ product.productPrice }}
+        </div>
+      </div>
     </div>
   </div>
 
