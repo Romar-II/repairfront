@@ -5,7 +5,7 @@
       <OnlineShopAccordion @event-category-change="handleCategoryChange"/>
     </div>
     <div class="col">
-      <ProductsDisplay ref="productsDisplayRef"/>
+      <ProductsDisplay @event-cart-changed="handelItemAddedInCart" ref="productsDisplayRef"/>
     </div>
   </div>
 
@@ -21,13 +21,17 @@ export default {
   components: {ProductsDisplay, OnlineShopAccordion},
   data(){
     return{
-
+      testNumber:0
     }
   },
   methods:{
     handleCategoryChange(categoryId, subCategoryId){
       this.$refs.productsDisplayRef.sendProductRequest(categoryId, subCategoryId)
+    },
+    handelItemAddedInCart(productId){
+      this.$emit('event-cart-changed',productId)
     }
-  }
+  },
+
 }
 </script>

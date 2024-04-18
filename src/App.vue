@@ -22,26 +22,35 @@
             <input class="form-control me-2" type="search" placeholder="Otsing" aria-label="Search">
             <button class="btn btn-outline-dark" type="submit">Otsi</button>
           </form>
-
         </ul>
+
+
+        <button class="btn btn-primary">
+          <font-awesome-icon :icon="['fas', 'basket-shopping']"/>
+          <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{numberOfItemsInCart}}</span>
+
+        </button>
+
         <button type="button" class="btn btn-primary">Logi sisse</button>
 
 
       </div>
     </div>
   </nav>
-  <router-view/>
+  <router-view @event-cart-changed="handleCartChange"/>
 
 </template>
 
-
 <script>
+
 import router from "@/router";
 
 export default {
 
   data() {
-    return {}
+    return {
+      numberOfItemsInCart:0
+    }
   },
   methods: {
     routeToCalculator() {
@@ -52,7 +61,11 @@ export default {
     },
     routeToHome() {
       router.push({name: 'home'})
+    },
+    handleCartChange(cartItems){
+      this.numberOfItemsInCart=this.numberOfItemsInCart+1
     }
   }
 }
 </script>
+

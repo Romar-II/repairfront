@@ -26,7 +26,7 @@
         <div>
           Hind: {{ product.productPrice }}
         </div>
-        <button>
+        <button @click="handelItemAddedInCart(product.productId)">
           {{ "Lisa korvi" }}
         </button>
       </div>
@@ -69,6 +69,9 @@ export default {
         const errorResponseBody = error.response.data
       })
     },
+    handelItemAddedInCart(productId){
+      this.$emit('event-cart-changed', productId)
+    }
   }
 }
 </script>
