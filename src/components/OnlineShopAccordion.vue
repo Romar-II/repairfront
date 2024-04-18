@@ -3,23 +3,24 @@
 
 
     <div class="col">
-      <div class="list-group" id="list-tab" role="tablist">
+      <div class="list-group text-center" id="list-tab" role="tablist">
+
         <div v-for="mainCategory in mainCategories">
-          <button  class="list-group-item list-group-item-action" ata-bs-toggle="button"  :key="mainCategory.categoryId"
+          <button class="list-group-item list-group-item-action" ata-bs-toggle="button" :key="mainCategory.categoryId"
                   @click="handleMainCategory(mainCategory.categoryId)" :id="mainCategory.categoryId">
             {{ mainCategory.categoryName }}
           </button>
           <div v-if="!mainCategory.isCollapsed">
             <button v-for="subCategory  in mainCategory.subCategories"
                     @click="handleSubCategory(mainCategory.categoryId,subCategory.subCategoryId)"
-                    :key="subCategory.subCategoryId" type="button" class="list-group-item list-group-item-action" >
+                    :key="subCategory.subCategoryId" type="button" class="ms-3 list-group-item list-group-item-action">
               {{ subCategory.subCategoryName }}
             </button>
           </div>
         </div>
       </div>
       {{ selectedCategoryId }}
-      {{ selectedSubCategoryId}}
+      {{ selectedSubCategoryId }}
 
 
     </div>
@@ -43,21 +44,23 @@ export default {
           ]
         }
       ],
-      selectedCategoryId:0,
-      selectedSubCategoryId:0
+      selectedCategoryId: 0,
+      selectedSubCategoryId: 0
     };
   },
   methods: {
+
     handleMainCategory(categoryId) {
+      console.log("Tere")
       this.toggleMainCategory(categoryId)
-      this.selectedCategoryId=categoryId
-      this.selectedSubCategoryId=0
+      this.selectedCategoryId = categoryId
+      this.selectedSubCategoryId = 0
       this.emitChosenCategories()
 
     },
     handleSubCategory(categoryId, subCategoryId) {
-      this.selectedCategoryId=categoryId
-      this.selectedSubCategoryId =subCategoryId
+      this.selectedCategoryId = categoryId
+      this.selectedSubCategoryId = subCategoryId
       this.emitChosenCategories()
     },
     toggleMainCategory(categoryId) {
@@ -69,7 +72,7 @@ export default {
         }
       });
     },
-    emitChosenCategories(){
+    emitChosenCategories() {
       this.$emit('event-category-change', this.selectedCategoryId, this.selectedSubCategoryId)
     },
 
@@ -99,5 +102,11 @@ export default {
 .list-group-item {
   min-width: 150px; /* Adjust this value as needed */
 }
+
+.bright-blue {
+  background-color: #007bff; /* Change this to your desired brighter blue color */
+  color: #fff; /* Change this to desired text color */
+}
+
 </style>
 

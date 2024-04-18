@@ -8,16 +8,16 @@
       ...
     </ul>
   </div>
-  <div class=" row container text-center">
-    <div v-for="product in products" class="col" :key="product.productId">
-      <div>
+  <div class="product-grid">
+    <div v-for="product in products" class="col text-center" :key="product.productId">
+      <div v-if="product.productId.valueOf()!==0" class="border-black border align-content-center">
         <div>
           <img src="../assets/default-product.30484205.png" height="200" width="200"/>
         </div>
         <div>
           {{ product.productImageData }}
         </div>
-        <div>
+        <div >
           {{ product.productName }}
         </div>
         <div>
@@ -53,6 +53,7 @@ export default {
   methods:{
 
     sendProductRequest(selectedCategoryId, selectedSubCategoryId) {
+      console.log("TERE MA OLEN SIIN")
       this.$http.get("/products", {
             params: {
               categoryId: selectedCategoryId,
@@ -73,4 +74,9 @@ export default {
 
 <style scoped>
 
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
 </style>
