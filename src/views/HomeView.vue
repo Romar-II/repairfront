@@ -4,7 +4,10 @@
   </div>
 
 
-  <img src="https://www.thewall360.com/uploadImages/ExtImages/images1/def-638240706028967470.jpg" alt="">
+
+  <img src="../assets/remont.png" class="rounded float-start" alt="...">
+  <img src="../assets/parandus1.png" class="rounded float-end" alt="...">
+
 </template>
 
 <script>
