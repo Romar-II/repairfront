@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col">
-      columd
+      {{ products }}
     </div>
   </div>
 
@@ -25,7 +25,36 @@
 
 <script>
 export default {
-  name: "ProductsDisplay"
+  name: "ProductsDisplay",
+  data(){
+    return{
+      products: [
+        {
+          productId: 0,
+          productName: '',
+          productPrice: 0.00,
+          productDescription: '',
+          productImageData: '',
+        }
+      ],
+    }
+  },
+  methods:{
+
+    sendProductRequest(selectedCategoryId, selectedSubCategoryId) {
+      this.$http.get("/products", {
+            params: {
+              categoryId: selectedCategoryId,
+              subCategoryId: selectedSubCategoryId
+            }
+          }
+      ).then(response => {
+        this.products = response.data
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+  }
 }
 </script>
 
