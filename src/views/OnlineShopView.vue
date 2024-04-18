@@ -1,7 +1,7 @@
 <template>
 
   <div class="row">
-    <div class="col-2 ms-5 mt-5">
+    <div class="col-3 ms-5 mt-5">
       <OnlineShopAccordion @event-category-change="handleCategoryChange"/>
     </div>
     <div class="col">

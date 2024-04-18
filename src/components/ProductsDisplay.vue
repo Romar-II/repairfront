@@ -26,6 +26,9 @@
         <div>
           Hind: {{ product.productPrice }}
         </div>
+        <button>
+          {{ "Lisa korvi" }}
+        </button>
       </div>
     </div>
   </div>
