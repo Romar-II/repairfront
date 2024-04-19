@@ -17,7 +17,7 @@
                             class="mt-5"/>
       </div>
       <div class="col">
-        <OrderRepairItemPriceSummary ref="orderRepairItemPriceSummaryRef" class="mt-5"/>
+        <OrderRepairItemPriceSummary @event-cart-change="handleRepairItemAddedInCart" ref="orderRepairItemPriceSummaryRef" class="mt-5"/>
       </div>
     </div>
   </div>
@@ -75,6 +75,10 @@ export default {
     selectRepairItemCategory(selectedRepairItem) {
       this.$refs.orderRepairItemPriceSummaryRef.repairItemCategories = selectedRepairItem
 
+    },
+
+    handleRepairItemAddedInCart(repairItemCategories) {
+      this.$emit('event-cart-changed', repairItemCategories)
     },
 
 

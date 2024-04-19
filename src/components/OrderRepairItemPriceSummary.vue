@@ -1,16 +1,18 @@
 <template>
-  <div class="container text-center"  v-if="repairItemCategories.repairItemId>0">
+  <div class="container text-center" v-if="repairItemCategories.repairItemId>0">
     <div class="row " >
       <div class="col justify-content-center even-row-color list-group-item list-group-item-action " >
-        <div class="list-group">Toode</div>
-        <div>{{repairItemCategories.repairItemCategoryName}}</div>
+        <div class="list-group">
+          Toode:
+          <div>{{repairItemCategories.repairItemCategoryName}}</div>
+        </div>
       </div>
       <div class="col">
-        Hind
+        Hind:
         <div class="justify-content-center">{{repairItemCategories.price}}</div>
       </div>
     </div>
-    <button class="mt-5 btn btn-primary" type="submit">Lisa korvi</button>
+    <button class="mt-5 btn btn-primary" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories)">Lisa korvi</button>
   </div>
 </template>
 
@@ -46,6 +48,10 @@ export default {
     sendGetRepairItemCategoryPriceRequest() {
 
 
+    },
+
+    handleRepairItemAddedInCart(repairItemCategories) {
+      this.$emit('event-cart-change',repairItemCategories)
     },
 
   }
