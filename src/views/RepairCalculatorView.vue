@@ -63,6 +63,10 @@ export default {
       errorMessage: '',
       successMessage: '',
 
+      selectedRepairMainCategoryId: null,
+      selectedRepairSubCategoryId: null,
+      selectedRepairItemId: null,
+
     }
   },
   methods: {
@@ -75,12 +79,24 @@ export default {
       this.$refs.modelYearDropdownRef.sendGetYearRequest()
     },
     selectRepairMainCategory(selectedCategoryId) {
+      // Nulli valitud alakategooria ID
+      this.selectedRepairSubCategoryId = null;
+      this.selectedRepairItemId = null;
+      this.resetOrderRepairItemPriceSummary();
+      // Seadista valitud kategooria ID
+      this.selectedRepairMainCategoryId = selectedCategoryId;
       this.$refs.repairSubCategoryRef.selectedRepairMainCategoryId = selectedCategoryId;
       this.$refs.repairSubCategoryRef.sendGetRepairSubCategoryRequest();
+      // Nulli valitud toote kategooria
+      this.$refs.repairItemCategoryRef.selectedRepairSubCategoryId = null;
 
     },
 
     selectRepairSubCategory(selectedSubCategoryId) {
+      this.selectedRepairItemId = null;
+      this.resetOrderRepairItemPriceSummary();
+      // Seadista valitud alakategooria ID
+      this.selectedRepairSubCategoryId = selectedSubCategoryId;
       this.$refs.repairItemCategoryRef.selectedRepairSubCategoryId = selectedSubCategoryId;
       this.$refs.repairItemCategoryRef.sendGetRepairItemCategoryRequest();
 
@@ -91,6 +107,11 @@ export default {
       this.$refs.orderRepairItemPriceSummaryRef.repairItemCategories = selectedRepairItem
 
     },
+
+    resetOrderRepairItemPriceSummary() {
+      // Nulli OrderRepairItemPriceSummary komponent
+      this.$refs.orderRepairItemPriceSummaryRef.repairItemCategories.repairItemId = null;
+      },
 
     handleRepairItemAddedInCart(repairItemCategories) {
       this.$emit('event-cart-changed', repairItemCategories)
