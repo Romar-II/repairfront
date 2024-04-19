@@ -65,6 +65,14 @@ export default {
 
 <style>
 #app {
+  min-height: 100vh; /* Minimum height of 100% of the viewport height */
+  background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
+  background-size: cover; /* Cover the entire container */
+  background-repeat: no-repeat; /* No repeat */
+  background-attachment: fixed;
+}
+
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -86,28 +94,20 @@ export default {
   /* Other styles for your app container */
 }
 
+.text-white{
+  color:white;
+}
+
 nav {
   padding: 30px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #2b2d30;
 }
 
 nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
-<style>
-
-#app {
-  min-height: 100vh; /* Minimum height of 100% of the viewport height */
-  background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
-  background-size: cover; /* Cover the entire container */
-  background-repeat: no-repeat; /* No repeat */
-  background-attachment: fixed;
-}
-
-</style>
-

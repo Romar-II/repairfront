@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
 
-    <div class=" col">
+    <div class=" col text-white ">
       <h1>Autoremondi pakkumine paari klikiga!</h1>
     </div>
 
@@ -41,3 +41,11 @@ export default {
 
 }
 </script>
+
+<style>
+
+.text-white{
+  color:white;
+}
+
+</style>
