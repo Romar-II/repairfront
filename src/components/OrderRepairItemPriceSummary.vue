@@ -19,7 +19,7 @@
 <style>
 
 .custom-container {
-  background-color: rgb(179, 243, 175); /* Light Gray Background with opacity */
+  background-color: rgb(26, 184, 111); /* Light Gray Background with opacity */
   border: 2px solid #198654; /* Border */
   border-radius: 8px; /* Rounded Corners */
   padding: 20px; /* Padding */
@@ -32,6 +32,10 @@
   border-radius: 8px; /* Rounded Corners */
   padding: 20px; /* Padding */
   margin-top: 20px; /* Margin Top */
+  .text-white{
+    color:white;
+  }
+
 }
 </style>
 
