@@ -16,6 +16,9 @@
         <div class="carousel-item" data-bs-interval="2000">
           <img src="../assets/pilt3.png" class="d-block w-50" alt="...">
         </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../assets/vaade1.jpg" class="d-block w-50" alt="...">
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
