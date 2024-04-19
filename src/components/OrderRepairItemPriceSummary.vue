@@ -1,18 +1,18 @@
 <template>
-  <div class="container text-center" v-if="repairItemCategories.repairItemId>0">
+  <div class="container text-center border border-success rounded p-4" v-if="repairItemCategories.repairItemId>0">
     <div class="row " >
       <div class="col justify-content-center even-row-color list-group-item list-group-item-action " >
-        <div class="list-group">
+        <div class="mt-1 list-group ">
           Toode:
           <div>{{repairItemCategories.repairItemCategoryName}}</div>
         </div>
       </div>
-      <div class="col">
+      <div class="mt-1 col">
         Hind:
-        <div class="justify-content-center">{{repairItemCategories.price}}</div>
+        <div class="justify-content-center">{{repairItemCategories.price}} EUR</div>
       </div>
     </div>
-    <button class="mt-5 btn btn-primary" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories)">Lisa korvi</button>
+    <button class="mt-5 btn btn-success" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories)">Lisa korvi</button>
   </div>
 </template>
 
