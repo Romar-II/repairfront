@@ -56,3 +56,40 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #151f26;
+
+
+
+  /* Set background size to cover the entire container */
+  background-size: cover;
+  /* Center the background image */
+  background-position: center;
+  /* Make sure the background image is fixed so it doesn't scroll with content */
+  background-attachment: fixed;
+  /* Add some fallback background color */
+  background-color: #358ed0; /* Fallback color */
+  /* Ensure content takes up the full height of the viewport */
+  min-height: 100vh;
+  /* Other styles for your app container */
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
