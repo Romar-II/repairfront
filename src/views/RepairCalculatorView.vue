@@ -2,17 +2,19 @@
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col">
-        <BrandDropdown @event-brand-change ="selectBrandId" class="mt-5"/>
-        <ModelDropdown ref="modelDropdownRef" class="mt-3"/>
-        <YearDropdown class="mt-3"/>
+        <BrandDropdown @event-brand-change="selectBrandId" class="mt-5"/>
+        <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" class="mt-3"/>
+        <YearDropdown ref="modelYearDropdownRef" class="mt-3"/>
         <RepairMainCategory @event-category-change="selectRepairMainCategory" class="mt-5"/>
 
       </div>
       <div class="col">
-        <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef" class="mt-5"/>
+        <RepairSubCategory @event-sub-category-change="selectRepairSubCategory" ref="repairSubCategoryRef"
+                           class="mt-5"/>
       </div>
       <div class="col">
-        <RepairItemCategory @event-repair-item-change="selectRepairItemCategory" ref="repairItemCategoryRef" class="mt-5"/>
+        <RepairItemCategory @event-repair-item-change="selectRepairItemCategory" ref="repairItemCategoryRef"
+                            class="mt-5"/>
       </div>
       <div class="col">
         <OrderRepairItemPriceSummary ref="orderRepairItemPriceSummaryRef" class="mt-5"/>
@@ -22,8 +24,6 @@
 
 
 </template>
-
-
 
 
 <script>
@@ -36,26 +36,30 @@ import RepairItemCategory from "@/components/RepairItemCategory.vue";
 import OrderRepairItemPriceSummary from "@/components/OrderRepairItemPriceSummary.vue";
 
 
-
 export default {
 
   components: {
     OrderRepairItemPriceSummary,
-    RepairItemCategory, RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown,RepairMainCategory},
+    RepairItemCategory, RepairSubCategory, BrandDropdown, YearDropdown, ModelDropdown, RepairMainCategory
+  },
   name: 'RepairCalculatorView',
-  data(){
-    return{
+  data() {
+    return {
       errorMessage: '',
       successMessage: '',
 
     }
   },
-  methods:{
-    selectBrandId(brandId){
-      this.$refs.modelDropdownRef.brandId= brandId
+  methods: {
+    selectBrandId(brandId) {
+      this.$refs.modelDropdownRef.brandId = brandId
       this.$refs.modelDropdownRef.sendGetModelRequest()
     },
-    selectRepairMainCategory(selectedCategoryId){
+    selectModelId(modelId) {
+      this.$refs.modelYearDropdownRef.selectedModelId = modelId
+      this.$refs.modelYearDropdownRef.sendGetYearRequest()
+    },
+    selectRepairMainCategory(selectedCategoryId) {
       this.$refs.repairSubCategoryRef.selectedRepairMainCategoryId = selectedCategoryId;
       this.$refs.repairSubCategoryRef.sendGetRepairSubCategoryRequest();
 
@@ -66,16 +70,12 @@ export default {
       this.$refs.repairItemCategoryRef.sendGetRepairItemCategoryRequest();
 
 
-
     },
 
     selectRepairItemCategory(selectedRepairItem) {
       this.$refs.orderRepairItemPriceSummaryRef.repairItemCategories = selectedRepairItem
 
     },
-
-
-
 
 
   }

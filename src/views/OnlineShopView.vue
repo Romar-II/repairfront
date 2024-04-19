@@ -1,11 +1,11 @@
 <template>
 
   <div class="row">
-    <div class="col-4 ms-5 mt-5">
-      <OnlineShopAccordion/>
+    <div class="col-3 ms-5 mt-5">
+      <OnlineShopAccordion @event-category-change="handleCategoryChange"/>
     </div>
     <div class="col">
-      <ProductsDisplay/>
+      <ProductsDisplay @event-cart-changed="handelItemAddedInCart" ref="productsDisplayRef"/>
     </div>
   </div>
 
@@ -18,6 +18,20 @@ import ProductsDisplay from "@/components/ProductsDisplay.vue";
 
 export default {
   name: "OnlineShopView",
-  components: {ProductsDisplay, OnlineShopAccordion}
+  components: {ProductsDisplay, OnlineShopAccordion},
+  data(){
+    return{
+      testNumber:0
+    }
+  },
+  methods:{
+    handleCategoryChange(categoryId, subCategoryId){
+      this.$refs.productsDisplayRef.sendProductRequest(categoryId, subCategoryId)
+    },
+    handelItemAddedInCart(productId){
+      this.$emit('event-cart-changed',productId)
+    }
+  },
+
 }
 </script>
