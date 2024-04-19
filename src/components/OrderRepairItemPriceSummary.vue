@@ -1,6 +1,6 @@
 <template>
-  <div class="container text-center border border-success rounded p-3 border-3 custom-container2 " v-if="repairItemCategories.repairItemId>0">Shopping List
-    <div class="row border" >
+  <div class="container text-center rounded p-3 border-3 custom-container2 " v-if="repairItemCategories.repairItemId>0">Shopping List
+    <div class="row custom-container " >
       <div class="col justify-content-center even-row-color list-group-item list-group-item-action " >
         <div class="mt-1 list-group ">
           Toode:
@@ -18,11 +18,17 @@
 
 <style>
 
-
+.custom-container {
+  background-color: rgb(179, 243, 175); /* Light Gray Background with opacity */
+  border: 2px solid #198654; /* Border */
+  border-radius: 8px; /* Rounded Corners */
+  padding: 20px; /* Padding */
+  margin-top: 20px; /* Margin Top */
+}
 
 .custom-container2 {
   background-color: rgb(255, 255, 255); /* Light Gray Background with opacity */
-  border: 5px solid #1860ac; /* Border */
+  border: 5px solid #198654; /* Border */
   border-radius: 8px; /* Rounded Corners */
   padding: 20px; /* Padding */
   margin-top: 20px; /* Margin Top */
