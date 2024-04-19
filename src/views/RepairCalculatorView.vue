@@ -30,7 +30,7 @@
 <style>
 .full-height-container {
   min-height: 100vh; /* Minimum height of 100% of the viewport height */
-  background-image: url('../assets/RepairBoyzBackG.jpg'); /* Background Image */
+  background-image: url('../assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
   background-size: cover; /* Cover the entire container */
   background-repeat: no-repeat; /* No repeat */
   background-attachment: fixed;
