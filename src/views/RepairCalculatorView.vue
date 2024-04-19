@@ -1,4 +1,5 @@
 <template>
+<body class="full-height-container">
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col">
@@ -21,9 +22,23 @@
       </div>
     </div>
   </div>
+</body>
 
 
 </template>
+
+<style>
+.full-height-container {
+  min-height: 100vh; /* Minimum height of 100% of the viewport height */
+  background-image: url('../assets/RepairBoyz2.jpg'); /* Background Image */
+  background-size: cover; /* Cover the entire container */
+  background-repeat: no-repeat; /* No repeat */
+  background-attachment: fixed;
+}
+
+</style>
+
+
 
 
 <script>

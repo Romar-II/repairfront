@@ -1,6 +1,6 @@
 <template>
-  <div class="container text-center border border-success rounded p-4" v-if="repairItemCategories.repairItemId>0">
-    <div class="row " >
+  <div class="container text-center border border-success rounded p-3 border-3 custom-container2 " v-if="repairItemCategories.repairItemId>0">Shopping List
+    <div class="row border" >
       <div class="col justify-content-center even-row-color list-group-item list-group-item-action " >
         <div class="mt-1 list-group ">
           Toode:
@@ -15,6 +15,20 @@
     <button class="mt-5 btn btn-success" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories)">Lisa korvi</button>
   </div>
 </template>
+
+<style>
+
+
+
+.custom-container2 {
+  background-color: rgb(255, 255, 255); /* Light Gray Background with opacity */
+  border: 5px solid #1860ac; /* Border */
+  border-radius: 8px; /* Rounded Corners */
+  padding: 20px; /* Padding */
+  margin-top: 20px; /* Margin Top */
+}
+</style>
+
 
 
 <script>
