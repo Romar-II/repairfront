@@ -88,7 +88,7 @@ export default {
   /* Make sure the background image is fixed so it doesn't scroll with content */
   background-attachment: fixed;
   /* Add some fallback background color */
-  background-color: #358ed0; /* Fallback color */
+  background-color: #0D6EFD; /* Fallback color */
   /* Ensure content takes up the full height of the viewport */
   min-height: 100vh;
   /* Other styles for your app container */

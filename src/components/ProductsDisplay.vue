@@ -85,4 +85,21 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
+button {
+  background:#4ed1e3;
+  border: 0px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: black;
+  font-size: 14px;
+
+}
+#products {
+
+  grid-gap: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+
+  background-color: white;
+}
 </style>

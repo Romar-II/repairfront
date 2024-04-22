@@ -6,14 +6,14 @@
       <div class="list-group text-center" id="list-tab" role="tablist">
 
         <div v-for="mainCategory in mainCategories">
-          <button class="list-group-item list-group-item-action" ata-bs-toggle="button" :key="mainCategory.categoryId"
+          <button class="list-group-item list-group-item-action btn" ata-bs-toggle="button" :key="mainCategory.categoryId"
                   @click="handleMainCategory(mainCategory.categoryId)" :id="mainCategory.categoryId">
             {{ mainCategory.categoryName }}
           </button>
           <div v-if="!mainCategory.isCollapsed">
             <button v-for="subCategory  in mainCategory.subCategories"
                     @click="handleSubCategory(mainCategory.categoryId,subCategory.subCategoryId)"
-                    :key="subCategory.subCategoryId" type="button" class="ms-3 list-group-item list-group-item-action">
+                    :key="subCategory.subCategoryId" type="button" class="btn ms-3 list-group-item list-group-item-action">
               {{ subCategory.subCategoryName }}
             </button>
           </div>
@@ -103,10 +103,19 @@ export default {
   min-width: 150px; /* Adjust this value as needed */
 }
 
-.bright-blue {
-  background-color: #007bff; /* Change this to your desired brighter blue color */
-  color: #fff; /* Change this to desired text color */
+button.btn:active{
+  background:#0D6EFD;
 }
+.btn{
+  border-radius: 0px;
+  background: white;
+} .btn:focus{
+    background: #0D6EFD;
+  }
+.btn:hover{
+    background: #0D6EFD;
+  }
+
 
 </style>
 
