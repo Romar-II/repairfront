@@ -22,10 +22,8 @@
 
       </div>
     </div>
-    <div class="position-relative">
-      <div class="position-absolute top-0 end-0">
-        <img src="../assets/garantii2.png" width="200" height="150">
-      </div>
+    <div class="col text-end">
+      <img src="../assets/garantii2.png" width="200" height="150">
     </div>
   </div>
 
