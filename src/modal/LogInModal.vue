@@ -1,5 +1,5 @@
 <template>
-<Modal ref="modalRef" @event-open-modal="focusOnFirstInputField">
+<Modal ref="modalRef" @event-open-modal="focusOnFirstInputField" @event-close-modal="resetAllInputFields">
   <template #title>
     Soovid sisse logida?
   </template>
@@ -7,8 +7,7 @@
   <template #body>
     <div class="container text-start">
       <div class="row justify-content-center">
-        <div class="col">
-          <AlertDanger :message="message"/>
+        <div class="col-7">
           <div class="mb-4">
             <label for="username" class="form-label">Kasutajanimi</label>
             <input ref="usernameInput" v-model="username" type="text" class="input-focus form-control border border-success" id="username">
@@ -46,10 +45,22 @@ export default {
       loginResponse: {
         userId: 0,
         roleName: ''
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
       }
 
     }
   },
+
+  methods:{
+    resetAllInputFields() {
+      this.username = ''
+      this.password = ''
+    },
+  }
+
 }
 </script>
 

@@ -28,7 +28,7 @@
           <font-awesome-icon :icon="['fas', 'basket-shopping']"/>
           <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{ numberOfItemsInCart }}</span>
         </button>
-        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal">Logi sisse</button>
+        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" >Logi sisse</button>
       </div>
     </div>
   </nav>
