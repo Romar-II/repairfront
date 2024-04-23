@@ -22,11 +22,10 @@
           </div>
         </div>
         <div class="col text-end">
-          <img src="../assets/garantii2.png" width="200" height="150">
+          <img src="../assets/garantii2.png" style="width: 30%;">
         </div>
       </div>
     </div>
-
   </div>
 
 </template>
@@ -44,6 +43,9 @@ export default {
 
 .text-white {
   color: white;
+}
+.blue-background {
+  background-color: #358ed0; /* Your desired background color */
 }
 
 </style>
