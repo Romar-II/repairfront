@@ -9,7 +9,7 @@
       <div class="row justify-content-center">
         <div class="col">
           <AlertDanger :message="message"/>
-          <div class="mb-3">
+          <div class="mb-4">
             <label for="username" class="form-label">Kasutajanimi</label>
             <input ref="usernameInput" v-model="username" type="text" class="input-focus form-control border border-success" id="username">
           </div>
@@ -43,6 +43,10 @@ export default {
     return{
       username: '',
       password: '',
+      loginResponse: {
+        userId: 0,
+        roleName: ''
+      }
 
     }
   },
