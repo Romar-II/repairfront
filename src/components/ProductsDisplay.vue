@@ -1,4 +1,7 @@
 <template>
+  <h>
+    {{testVar}}
+  </h>
 
   <div class="d-flex justify-content-end me-3 mt-3">
     <button class="btn btn-secondary btn-sm dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -9,8 +12,8 @@
     </ul>
   </div>
   <div class="product-grid">
-    <div v-for="product in products" class="col text-center" :key="product.productId">
-      <div v-if="product.productId.valueOf()!==0" class="border-black border align-content-center">
+    <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
+      <div v-if="product.productId.valueOf()!==0" class="align-content-center">
         <div>
           <img src="../assets/default-product.30484205.png" height="200" width="200"/>
         </div>
@@ -26,7 +29,7 @@
         <div>
           Hind: {{ product.productPrice }}
         </div>
-        <button @click="handelItemAddedInCart(product.productId)">
+        <button @click="sendPostNewItemInCartRequest(product.productId)">
           {{ "Lisa korvi" }}
         </button>
       </div>
@@ -42,6 +45,7 @@ export default {
   name: "ProductsDisplay",
   data(){
     return{
+      testVar:0,
       products: [
         {
           productId: 0,
@@ -51,12 +55,12 @@ export default {
           productImageData: '',
         }
       ],
+
     }
   },
   methods:{
 
     sendProductRequest(selectedCategoryId, selectedSubCategoryId) {
-      console.log("TERE MA OLEN SIIN")
       this.$http.get("/products", {
             params: {
               categoryId: selectedCategoryId,
@@ -69,8 +73,22 @@ export default {
         const errorResponseBody = error.response.data
       })
     },
-    handelItemAddedInCart(productId){
-      this.$emit('event-cart-changed', productId)
+
+    sendPostNewItemInCartRequest(productId) {
+      this.$http.post("/cart", null, {
+            params: {
+              userId: 1,
+              productId: productId
+            }
+          }
+      ).then(response => {
+        this.handleItemAddedInCart()
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
+    },
+    handleItemAddedInCart(){
+      this.$emit('event-cart-changed')
     }
   }
 }
@@ -80,13 +98,18 @@ export default {
 
 <style scoped>
 
+h{
+  background-color: white
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+
 }
 button {
-  background:#4ed1e3;
+  background:#0D6EFD;
   border: 0px;
   border-radius: 4px;
   padding: 10px 20px;

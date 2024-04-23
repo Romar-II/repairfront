@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import RepairCalculatorView from "@/views/RepairCalculatorView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 import OnlineShopView from "@/views/OnlineShopView.vue";
+import BasketView from "@/views/BasketView.vue";
 
 
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
         path: '/online-shop',
         name: 'onlineShopRoute',
         component: OnlineShopView
+    },
+    {
+        path: '/basket',
+        name: 'basketRoute',
+        component: BasketView
     },
     {
         path: '/calculator',
