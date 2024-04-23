@@ -1,5 +1,4 @@
 <template>
-  <BasketView ref="basketViewRef" style="display: none;"></BasketView>
   <h1>
     {{ testVar }}</h1>
   <nav class="navbar bg-primary navbar-expand-lg">
@@ -51,7 +50,8 @@ export default {
   data() {
     return {
       numberOfItemsInCart: 0,
-      testVar: 0
+      testVar: 0,
+      userId: 1,
     }
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
       router.push({name: 'basketRoute'})
     },
     updateCart() {
-      this.$http.get("/cartupdate")
+      this.$http.get(`/cart/update/${this.userId}`)
           .then(response => {
             this.numberOfItemsInCart = response.data
           })
