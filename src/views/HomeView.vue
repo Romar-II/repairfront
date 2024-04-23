@@ -25,11 +25,11 @@
           <img src="../assets/garantii2.png" class="rounded-pill" style="width: 30%;">
         </div>
       </div>
+
     </div>
+
   </div>
-  <div class="blue-background">
-    <!-- Your content goes here -->
-  </div>
+
 
 </template>
 
@@ -47,8 +47,9 @@ export default {
 .text-white {
   color: white;
 }
+
 .blue-background {
-  background-color: #dde5ea; /* Your desired background color */
+  background-color: #3ca0de; /* Your desired background color */
 }
 
 </style>
