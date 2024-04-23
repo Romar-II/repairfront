@@ -28,18 +28,23 @@
           <font-awesome-icon :icon="['fas', 'basket-shopping']"/>
           <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{ numberOfItemsInCart }}</span>
         </button>
-        <button type="button" class="btn btn-primary">Logi sisse</button>
+        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal">Logi sisse</button>
       </div>
     </div>
   </nav>
+  <LogInModal ref="logInModalRef"/>
+  <LogOutModal ref="logOutModalRef"/>
   <router-view @event-cart-changed="handleCartChange"/>
 </template>
 
 <script>
 
 import router from "@/router";
+import LogInModal from "@/modal/LogInModal.vue";
+import LogOutModal from "@/modal/LogOutModal.vue";
 
 export default {
+  components: {LogOutModal, LogInModal},
 
   data() {
     return {
@@ -58,7 +63,11 @@ export default {
     },
     handleCartChange(cartItems) {
       this.numberOfItemsInCart = this.numberOfItemsInCart + 1
-    }
+    },
+    openLogInModal() {
+      this.$refs.logInModalRef.$refs.modalRef.openModal()
+    },
+
   }
 }
 </script>

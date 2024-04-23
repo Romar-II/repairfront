@@ -1,5 +1,5 @@
 <template>
-<Modal ref="modalRef">
+<Modal ref="modalRef" @event-open-modal="focusOnFirstInputField">
   <template #title>
     Soovid sisse logida?
   </template>
