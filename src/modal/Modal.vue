@@ -1,8 +1,9 @@
 <template>
-
-  <div v-if="isOpen" class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <!-- Modal -->
+  <div v-if="isOpen" class="modal-backdrop fade show d-block" />
+  <FocusTrap v-if="isOpen" class="modal fade show" tabindex="-1" style="display: block;">
+    <div class="modal-dialog" ref="modalRef">
+      <div :class="'modal-content ' + modalBgColor">
         <div class="modal-header">
           <h1 class="modal-title fs-5">
             <slot name="title">
@@ -24,12 +25,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </FocusTrap>
 </template>
 
 <script>
+import {FocusTrap} from "focus-trap-vue";
+
 export default {
   name: "Modal",
+  components: {FocusTrap},
 
   data() {
     return{

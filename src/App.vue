@@ -30,10 +30,10 @@
         </button>
 
         <template v-if="isLoggedIn">
-        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logOutModal" >Logi välja</button>
+        <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi välja</button>
         </template>
         <template v-else>
-          <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" >Logi sisse</button>
+          <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi sisse</button>
         </template>
 
       </div>
