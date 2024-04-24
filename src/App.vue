@@ -32,10 +32,10 @@
         </button>
 
         <template v-if="isLoggedIn">
-        <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi välja</button>
+          <button @click="openLogInModal" type="button" class="btn btn-primary">Logi välja</button>
         </template>
         <template v-else>
-          <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi sisse</button>
+          <button @click="openLogInModal" type="button" class="btn btn-primary">Logi sisse</button>
         </template>
 
       </div>
@@ -86,12 +86,8 @@ export default {
           .catch(error => {
             const errorResponseBody = error.response.data
           })
-    }
-  },
-
-    handleCartChange(cartItems) {
-      this.numberOfItemsInCart = this.numberOfItemsInCart + 1
     },
+
     openLogInModal() {
       this.$refs.logInModalRef.$refs.modalRef.openModal()
     },
@@ -112,9 +108,11 @@ export default {
         this.isAdmin = roleName === 'admin'
       }
     },
+  },
 
-  }
+
 }
+
 </script>
 
 <style>
@@ -134,7 +132,6 @@ export default {
   color: #151f26;
 
 
-
   /* Set background size to cover the entire container */
   background-size: cover;
   /* Center the background image */
@@ -148,8 +145,8 @@ export default {
   /* Other styles for your app container */
 }
 
-.text-white{
-  color:white;
+.text-white {
+  color: white;
 }
 
 nav {
