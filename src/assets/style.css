@@ -4,7 +4,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #ffffff; /*E-poe moodulis
+    color: #151f26; /*E-poe moodulis
 
     /* Set background size to cover the entire container */
     background-size: cover;
@@ -18,7 +18,7 @@
     min-height: 100vh;
     /* Other styles for your app container */
 }
-.text-white{
+/*.text-white{
     color: #ffffff;
 }
 nav {
