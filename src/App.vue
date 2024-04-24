@@ -28,12 +28,19 @@
           <font-awesome-icon :icon="['fas', 'basket-shopping']"/>
           <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{ numberOfItemsInCart }}</span>
         </button>
-        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" >Logi sisse</button>
+
+        <template v-if="isLoggedIn">
+        <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logOutModal" >Logi välja</button>
+        </template>
+        <template v-else>
+          <button @click="openLogInModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" >Logi sisse</button>
+        </template>
+
       </div>
     </div>
   </nav>
-  <LogInModal ref="logInModalRef"/>
-  <LogOutModal ref="logOutModalRef"/>
+  <LogInModal ref="logInModalRef" @event-update-nav-menu="updateNavMenu"/>
+  <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
   <router-view @event-cart-changed="handleCartChange"/>
 </template>
 
@@ -48,6 +55,8 @@ export default {
 
   data() {
     return {
+      isLoggedIn: false,
+      isAdmin: false,
       numberOfItemsInCart: 0
     }
   },
@@ -66,6 +75,23 @@ export default {
     },
     openLogInModal() {
       this.$refs.logInModalRef.$refs.modalRef.openModal()
+    },
+
+    updateNavMenu() {
+      this.updateIsLoggedInValue()
+      this.updateIsAdminValue()
+    },
+
+    updateIsLoggedInValue() {
+      let userId = sessionStorage.getItem('userId')
+      this.isLoggedIn = userId !== null
+    },
+
+    updateIsAdminValue() {
+      if (this.isLoggedIn) {
+        let roleName = sessionStorage.getItem('roleName')
+        this.isAdmin = roleName === 'admin'
+      }
     },
 
   }

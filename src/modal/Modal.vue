@@ -9,6 +9,7 @@
               <!-- Title-->
             </slot>
           </h1>
+          <button type="button" class="btn-close" @click="closeModal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <slot name="body">
@@ -32,13 +33,13 @@ export default {
 
   data() {
     return{
-      isOpen:true
+      isOpen:false
     }
   },
 
   methods: {
     openModal() {
-      this.$emit('event-open-modal');
+      //this.$emit('event-open-modal');
       this.isOpen = true
     },
     closeModal() {
