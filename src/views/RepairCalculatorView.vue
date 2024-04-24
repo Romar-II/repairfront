@@ -114,10 +114,8 @@ export default {
       },
 
     handleRepairItemAddedInCart(repairItemCategories) {
-      this.$emit('event-cart-changed', repairItemCategories)
+      this.$emit('event-cart-changed')
     },
-
-
   }
 
 }

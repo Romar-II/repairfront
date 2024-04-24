@@ -28,8 +28,8 @@ export default {
     handleCategoryChange(categoryId, subCategoryId){
       this.$refs.productsDisplayRef.sendProductRequest(categoryId, subCategoryId)
     },
-    handelItemAddedInCart(productId){
-      this.$emit('event-cart-changed',productId)
+    handelItemAddedInCart(){
+      this.$emit('event-cart-changed')
     }
   },
 

@@ -24,26 +24,45 @@
         </ul>
       </div>
       <div>
-        <button type="button" class="btn btn-primary">
+        <button @click="routeToBasket" type="button" class="btn btn-primary">
           <font-awesome-icon :icon="['fas', 'basket-shopping']"/>
-          <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{ numberOfItemsInCart }}</span>
+          <span v-if="numberOfItemsInCart!==0" class="badge rounded-pill text-bg-danger">{{
+              numberOfItemsInCart
+            }}</span>
         </button>
-        <button type="button" class="btn btn-primary">Logi sisse</button>
+
+        <template v-if="isLoggedIn">
+          <button @click="openLogOutModal" type="button" class="btn btn-primary">Logi välja</button>
+        </template>
+        <template v-else>
+          <button @click="openLogInModal" type="button" class="btn btn-primary">Logi sisse</button>
+        </template>
+
       </div>
     </div>
   </nav>
-  <router-view @event-cart-changed="handleCartChange"/>
+  <LogInModal ref="logInModalRef" @event-update-nav-menu="updateNavMenu"/>
+  <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
+  <router-view @event-cart-changed="updateCart"/>
 </template>
 
 <script>
 
 import router from "@/router";
+import LogInModal from "@/modal/LogInModal.vue";
+import LogOutModal from "@/modal/LogOutModal.vue";
+import BasketView from "@/views/BasketView.vue";
 
 export default {
+  components: {BasketView, LogOutModal, LogInModal},
 
   data() {
     return {
-      numberOfItemsInCart: 0
+      numberOfItemsInCart: 0,
+      testVar: 0,
+      userId: 1,
+      isLoggedIn: false,
+      isAdmin: false,
     }
   },
   methods: {
@@ -56,11 +75,48 @@ export default {
     routeToHome() {
       router.push({name: 'home'})
     },
-    handleCartChange(cartItems) {
-      this.numberOfItemsInCart = this.numberOfItemsInCart + 1
-    }
-  }
+    routeToBasket() {
+      router.push({name: 'basketRoute'})
+    },
+    updateCart() {
+      this.$http.get(`/cart/update/${this.userId}`)
+          .then(response => {
+            this.numberOfItemsInCart = response.data
+          })
+          .catch(error => {
+            const errorResponseBody = error.response.data
+          })
+    },
+
+    openLogInModal() {
+      this.$refs.logInModalRef.$refs.modalRef.openModal()
+    },
+
+    openLogOutModal() {
+      this.$refs.logOutModalRef.$refs.modalRef.openModal()
+    },
+
+    updateNavMenu() {
+      this.updateIsLoggedInValue()
+      this.updateIsAdminValue()
+    },
+
+    updateIsLoggedInValue() {
+      let userId = sessionStorage.getItem('userId')
+      this.isLoggedIn = userId !== null
+    },
+
+    updateIsAdminValue() {
+      if (this.isLoggedIn) {
+        let roleName = sessionStorage.getItem('roleName')
+        this.isAdmin = roleName === 'admin'
+      }
+    },
+  },
+
+
 }
+
 </script>
 
 <style>
