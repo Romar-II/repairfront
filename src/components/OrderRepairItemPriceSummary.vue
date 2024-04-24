@@ -12,7 +12,7 @@
         <div class="justify-content-center">{{repairItemCategories.price}} EUR</div>
       </div>
     </div>
-    <button class="mt-5 btn btn-success" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories)">Lisa korvi</button>
+    <button class="mt-5 btn btn-success" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories.repairItemId)">Lisa korvi</button>
   </div>
 </template>
 
@@ -38,12 +38,8 @@
   .text-black{
     color: black;
   }
-
 }
 </style>
-
-
-
 <script>
 export default {
   name: "OrderRepairItemPriceSummary",
@@ -61,29 +57,31 @@ export default {
           repairItemCategoryName: '',
           price: 0
         }
-
       ]
-
-
-
     }
   },
 
 
   methods: {
 
-    sendGetRepairItemCategoryPriceRequest() {
-
-
+    handleRepairItemAddedInCart(repairItemId) {
+      this.addItemToCart(repairItemId)
+      this.$emit('event-cart-change')
     },
-
-    handleRepairItemAddedInCart(repairItemCategories) {
-      this.$emit('event-cart-change',repairItemCategories)
+    addItemToCart(repairItemId) {
+      this.$http.post("/cart/repairitem", null, {
+            params: {
+              userId: 1,
+              repairItemId: repairItemId
+            }
+          }
+      ).then(response => {
+        const responseBody = response.data
+      }).catch(error => {
+        const errorResponseBody = error.response.data
+      })
     },
-
   }
-
-
 }
 </script>
 
