@@ -44,12 +44,6 @@ export default {
 
 <style>
 
-.text-white {
-  color: white;
-}
 
-.blue-background {
-  background-color: #3ca0de; /* Your desired background color */
-}
 
 </style>

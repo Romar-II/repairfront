@@ -66,7 +66,7 @@ export default {
 <style>
 #app {
   min-height: 100vh; /* Minimum height of 100% of the viewport height */
-  background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
+  //background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
   background-size: cover; /* Cover the entire container */
   background-repeat: no-repeat; /* No repeat */
   background-attachment: fixed;
@@ -88,7 +88,7 @@ export default {
   /* Make sure the background image is fixed so it doesn't scroll with content */
   background-attachment: fixed;
   /* Add some fallback background color */
-  background-color: #358ed0; /* Fallback color */
+  background-color: #4cb2f3; /* Fallback color */
   /* Ensure content takes up the full height of the viewport */
   min-height: 100vh;
   /* Other styles for your app container */
@@ -108,6 +108,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #46c1cc;
 }
 </style>
