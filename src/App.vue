@@ -1,6 +1,4 @@
 <template>
-  <h1>
-    {{ testVar }}</h1>
   <nav class="navbar bg-primary navbar-expand-lg">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -32,26 +30,39 @@
               numberOfItemsInCart
             }}</span>
         </button>
-        <button type="button" class="btn btn-primary">Logi sisse</button>
+
+        <template v-if="isLoggedIn">
+        <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi välja</button>
+        </template>
+        <template v-else>
+          <button @click="openLogInModal" type="button" class="btn btn-primary" >Logi sisse</button>
+        </template>
+
       </div>
     </div>
   </nav>
+  <LogInModal ref="logInModalRef" @event-update-nav-menu="updateNavMenu"/>
+  <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
   <router-view @event-cart-changed="updateCart"/>
 </template>
 
 <script>
 
 import router from "@/router";
+import LogInModal from "@/modal/LogInModal.vue";
+import LogOutModal from "@/modal/LogOutModal.vue";
 import BasketView from "@/views/BasketView.vue";
 
 export default {
-  components: {BasketView},
+  components: {BasketView, LogOutModal, LogInModal},
 
   data() {
     return {
       numberOfItemsInCart: 0,
       testVar: 0,
       userId: 1,
+      isLoggedIn: false,
+      isAdmin: false,
     }
   },
   methods: {
@@ -78,13 +89,38 @@ export default {
     }
   },
 
+    handleCartChange(cartItems) {
+      this.numberOfItemsInCart = this.numberOfItemsInCart + 1
+    },
+    openLogInModal() {
+      this.$refs.logInModalRef.$refs.modalRef.openModal()
+    },
+
+    updateNavMenu() {
+      this.updateIsLoggedInValue()
+      this.updateIsAdminValue()
+    },
+
+    updateIsLoggedInValue() {
+      let userId = sessionStorage.getItem('userId')
+      this.isLoggedIn = userId !== null
+    },
+
+    updateIsAdminValue() {
+      if (this.isLoggedIn) {
+        let roleName = sessionStorage.getItem('roleName')
+        this.isAdmin = roleName === 'admin'
+      }
+    },
+
+  }
 }
 </script>
 
 <style>
 #app {
   min-height: 100vh; /* Minimum height of 100% of the viewport height */
-  //background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
+  background-image: url('../src/assets/RepairBoyzBackUpdated.jpg'); /* Background Image */
   background-size: cover; /* Cover the entire container */
   background-repeat: no-repeat; /* No repeat */
   background-attachment: fixed;
@@ -98,6 +134,7 @@ export default {
   color: #151f26;
 
 
+
   /* Set background size to cover the entire container */
   background-size: cover;
   /* Center the background image */
@@ -105,14 +142,14 @@ export default {
   /* Make sure the background image is fixed so it doesn't scroll with content */
   background-attachment: fixed;
   /* Add some fallback background color */
-  //background-color: #0D6EFD; /* Fallback color */
+  background-color: #358ed0; /* Fallback color */
   /* Ensure content takes up the full height of the viewport */
   min-height: 100vh;
   /* Other styles for your app container */
 }
 
-.text-white {
-  color: white;
+.text-white{
+  color:white;
 }
 
 nav {
