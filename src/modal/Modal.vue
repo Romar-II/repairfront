@@ -37,7 +37,8 @@ export default {
 
   data() {
     return{
-      isOpen:false
+      isOpen:false,
+      useEnterForCloseButton: false
     }
   },
 
@@ -45,13 +46,26 @@ export default {
     openModal() {
       //this.$emit('event-open-modal');
       this.isOpen = true
+      window.addEventListener('keydown', this.onKeyPress);
+      document.activeElement.blur()
     },
     closeModal() {
       this.$emit('event-close-modal')
       this.isOpen = false
-
+      window.removeEventListener('keydown', this.onKeyPress);
 
     },
+
+    onKeyPress(event) {
+      if (event.key === 'Escape' || event.key === 'Esc') {
+        this.closeModal();
+      }
+
+      if (this.useEnterForCloseButton && event.key === 'Enter') {
+        this.closeModal()
+      }
+
+    }
   }
 
 

@@ -32,7 +32,7 @@
         </button>
 
         <template v-if="isLoggedIn">
-          <button @click="openLogInModal" type="button" class="btn btn-primary">Logi välja</button>
+          <button @click="openLogOutModal" type="button" class="btn btn-primary">Logi välja</button>
         </template>
         <template v-else>
           <button @click="openLogInModal" type="button" class="btn btn-primary">Logi sisse</button>
@@ -90,6 +90,10 @@ export default {
 
     openLogInModal() {
       this.$refs.logInModalRef.$refs.modalRef.openModal()
+    },
+
+    openLogOutModal() {
+      this.$refs.logOutModalRef.$refs.modalRef.openModal()
     },
 
     updateNavMenu() {
