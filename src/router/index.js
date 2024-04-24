@@ -4,6 +4,7 @@ import RepairCalculatorView from "@/views/RepairCalculatorView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 import OnlineShopView from "@/views/OnlineShopView.vue";
 import BasketView from "@/views/BasketView.vue";
+import RegistrationView from "@/views/RegistrationView.vue";
 
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
         path: '/error',
         name: 'errorRoute',
         component: ErrorView
+    },{
+        path: '/registration',
+        name: 'registrationRoute',
+        component: RegistrationView
     },
 
 ]
