@@ -113,6 +113,9 @@ export default {
       }
     },
   },
+  beforeMount() {
+    this.updateCart()
+  }
 
 
 }

@@ -25,19 +25,22 @@
 
 
     </div>
-    <div class="col">
-
+    <div class="col mt-5">
+      <PendingCart/>
     </div>
   </div>
-
+  List asjadest
 </template>
 
 
 <script>
 
 
+import PendingCart from "@/components/PendingCart.vue";
+
 export default {
   name: "BasketView",
+  components: {PendingCart},
 
   data() {
     return {
@@ -45,45 +48,29 @@ export default {
       productsIds: [1, 2, 3, 4, 5],
       userId: 1,
       // userId: sessionStorage.getItem('userId'),
-      cartItems:[
+      cartItems: [
         {
-          productId:0,
-          price:0,
-          quantity:0,
+          productId: 0,
+          repairItemId:0,
+          price: 0,
+          quantity: 0,
         }
       ],
-      cartRepairItems:[
-        {
-          repairItemId:0,
-          price:0,
-          quantity:0,
-        }
-      ]
     }
   },
   methods: {
-    getCartItems(){
-        this.$http.get(`/cart/items/${this.userId}`)
-            .then(response => {
-              this.cartItems = response.data
-            })
-            .catch(error => {
-              const errorResponseBody = error.response.data
-            })
+    getCartItems() {
+      this.$http.get(`/cart/items/${this.userId}`)
+          .then(response => {
+            this.cartItems = response.data
+          })
+          .catch(error => {
+            const errorResponseBody = error.response.data
+          })
     },
-    getCartRepairItems(){
-        this.$http.get(`/cart/repairitems/${this.userId}`)
-            .then(response => {
-              this.cartRepairItems = response.data
-            })
-            .catch(error => {
-              const errorResponseBody = error.response.data
-            })
-    }
   },
   beforeMount() {
     this.getCartItems()
-    this.getCartRepairItems()
   }
 }
 </script>
