@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="col text-end">
+        <div class="col text-end-6">
           <img src="../assets/garantii2.png" class="rounded-pill" style="width: 30%;">
         </div>
       </div>
@@ -44,12 +44,6 @@ export default {
 
 <style>
 
-.text-white {
-  color: white;
-}
 
-.blue-background {
-  background-color: #3ca0de; /* Your desired background color */
-}
 
 </style>
