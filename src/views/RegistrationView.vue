@@ -1,4 +1,3 @@
-
 <template>
   <div class="container justify-content-center">
     <h1>Registration Form</h1>
@@ -19,52 +18,60 @@
       <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" class="mt-3"/>
       <YearDropdown ref="modelYearDropdownRef" class="mt-3"/>
 
-<!--      <label for="carBrand" class="form-label">Automark</label>-->
-<!--      <input v-model="carBrand" type="text" class="form-control border border-success " id="password">-->
+      <!--      <label for="carBrand" class="form-label">Automark</label>-->
+      <!--      <input v-model="carBrand" type="text" class="form-control border border-success " id="password">-->
 
-<!--      <label for="carModel" class="form-label">Mudel</label>-->
-<!--      <input v-model="carModel" type="text" class="form-control border border-success " id="password">-->
+      <!--      <label for="carModel" class="form-label">Mudel</label>-->
+      <!--      <input v-model="carModel" type="text" class="form-control border border-success " id="password">-->
     </div>
     <div class="mt-4">
-      <button>Registreeri 50eur eest</button>
+      <button type="button" class="btn btn-success">Registreeri 50eur eest</button>
+      <div class="mt-4">
+        <a type="button" class="btn btn-danger" @click="goToHomePage" >Tühista</a>
+      </div>
     </div>
 
 
   </div>
- </template>
+</template>
 
 
-  <script>
-    import BrandDropdown from "@/components/BrandDropdown.vue";
-    import ModelDropdown from "@/components/ModelDropdown.vue";
-    import YearDropdown from "@/components/YearDropdown.vue";
+<script>
+import BrandDropdown from "@/components/BrandDropdown.vue";
+import ModelDropdown from "@/components/ModelDropdown.vue";
+import YearDropdown from "@/components/YearDropdown.vue";
+import router from "@/router";
 
-    export default {
-      name: "RegistrationView",
-      components: {YearDropdown, ModelDropdown, BrandDropdown},
+export default {
+  name: "RegistrationView",
+  components: {YearDropdown, ModelDropdown, BrandDropdown},
 
-      data() {
-        return{
-          username:'',
-          password:'',
-          email:'',
-          carBrand:'',
-          carModel:'',
+  data() {
+    return {
+      username: '',
+      password: '',
+      email: '',
+      carBrand: '',
+      carModel: '',
 
-
-        }
-      },
-
-      methods:{
-        selectBrandId(brandId) {
-          this.$refs.modelDropdownRef.brandId = brandId
-          this.$refs.modelDropdownRef.sendGetModelRequest()
-        },
-        selectModelId(modelId) {
-          this.$refs.modelYearDropdownRef.selectedModelId = modelId
-          this.$refs.modelYearDropdownRef.sendGetYearRequest()
-        },
-      }
 
     }
-  </script>
+  },
+
+  methods: {
+    selectBrandId(brandId) {
+      this.$refs.modelDropdownRef.brandId = brandId
+      this.$refs.modelDropdownRef.sendGetModelRequest()
+    },
+    selectModelId(modelId) {
+      this.$refs.modelYearDropdownRef.selectedModelId = modelId
+      this.$refs.modelYearDropdownRef.sendGetYearRequest()
+    },
+
+    goToHomePage() {
+      router.push({name:'home'})
+    },
+  }
+
+}
+</script>
