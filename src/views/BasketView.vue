@@ -78,7 +78,7 @@ export default {
 
 <style scoped>
 button.btn:active {
-  background: #0D6EFD;
+  background: #358ed0;
 }
 
 .btn {
@@ -91,7 +91,7 @@ button.btn:active {
   border-color: black;
   border-radius: 4px;
   padding: 10px 20px;
-  color: black;
+  color: #151f26;
   font-size: 14px;
 }
 
