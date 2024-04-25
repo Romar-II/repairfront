@@ -29,7 +29,7 @@
 
     Telli
   </button>
-  <button @click="handleEmptyBasketClick" class="custom-button"">
+  <button @click="handleEmptyBasketClick" class="custom-button">
     Tühjenda korv
   </button>
   </div>
