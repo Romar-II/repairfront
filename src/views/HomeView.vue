@@ -1,4 +1,5 @@
 <template>
+
   <div class="text-center">
     <div class="row">
       <div class="col">
@@ -25,8 +26,8 @@
           <img src="../assets/garantii2.png" class="rounded-pill" style="width:30%;">
         </div>
       </div>
-
     </div>
+
 
   </div>
 
@@ -43,7 +44,5 @@ export default {
 </script>
 
 <style>
-
-
 
 </style>
