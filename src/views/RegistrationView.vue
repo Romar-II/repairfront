@@ -39,6 +39,19 @@
         <small v-if="!newUser.carYear && !formValid" class="text-danger">Auto aasta on nõutud</small>
       </div>
     </div>
+    <div class="mt-3">
+      <div class="d-flex justify-content-center">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" v-model="agreeTerms">
+          <label class="form-check-label" for="flexCheckChecked">
+            Nõustun kasutaja tingimustega
+          </label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+        <small v-if="!agreeTerms && !formValid" class="text-danger">Palun nõustu kasutaja tingimustega</small>
+      </div>
+    </div>
     <div class="mt-4">
       <button type="button" class="btn btn-success" @click="registerUser">Registreeri 50eur eest</button>
       <div class="mt-4">
@@ -73,7 +86,7 @@ export default {
       passwordRepeat: '',
       passwordsMatch: true,
       formValid: true,
-      testVar: 0
+      agreeTerms: false,
 
 
 
@@ -110,14 +123,14 @@ export default {
 
     registerUser() {
       this.validateForm();
-      if (!this.checkPasswordMatch()) {
+      if (!this.checkPasswordMatch() || !this.agreeTerms) {
 
       }
 
     },
 
     validateForm() {
-      if (!this.username || !this.password || !this.passwordRepeat || !this.email || !this.carBrand || !this.carModel || !this.passwordsMatch) {
+      if (!this.username || !this.password || !this.passwordRepeat || !this.email || !this.carBrand || !this.carModel || !this.passwordsMatch || !this.agreeTerms) {
         this.formValid = false;
       } else {
         this.formValid = true;
