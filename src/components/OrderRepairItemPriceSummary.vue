@@ -12,7 +12,7 @@
         <div class="justify-content-center">{{repairItemCategories.price}} EUR</div>
       </div>
     </div>
-    <button class="mt-5 btn btn-success" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories.repairItemId)">Lisa korvi</button>
+    <button class="custom-button" type="submit" @click="handleRepairItemAddedInCart(repairItemCategories.repairItemId)">Lisa korvi</button>
   </div>
 </template>
 
