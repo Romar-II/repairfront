@@ -18,7 +18,7 @@
               <input v-model="password" type="password" class="form-control border border-success " id="password">
             </div>
             <div class="mb-4">
-              <router-link to="/registration" class="link-opacity-50-hover">Registreeri kasutaja</router-link>
+              <router-link @click="$refs.modalRef.closeModal" to="/registration" class="link-opacity-50-hover">Registreeri kasutaja</router-link>
             </div>
           </div>
         </div>
