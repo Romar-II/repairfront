@@ -9,7 +9,7 @@
       <input v-model="password" type="password" class="form-control border border-success " id="password">
 
       <label for="password" class="form-label">Parool uuesti</label>
-      <input v-model="password" type="password" class="form-control border border-success " id="password">
+      <input v-model="passwordRepeat" type="password" class="form-control border border-success " id="password">
 
       <label for="email" class="form-label">E-Mail</label>
       <input v-model="email" type="email" class="form-control border border-success " id="password">
@@ -48,11 +48,13 @@ export default {
 
   data() {
     return {
-      username: '',
-      password: '',
-      email: '',
-      carBrand: '',
-      carModel: '',
+
+        username: '',
+        password: '',
+        passwordRepeat:'',
+        email: '',
+        carBrand: '',
+        carModel: '',
 
 
     }
