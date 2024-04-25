@@ -1,7 +1,6 @@
 <template>
   <div class="container justify-content-center">
     <h1>Registration Form</h1>
-    {{testVar}}
     <div class="mt-4 container text-start col-3">
       <div class="mt-2">
         <label for="username" class="form-label">Kasutajanimi</label>
@@ -26,7 +25,7 @@
       </div>
       <div class="mt-5">
         <label for="carBrand" class="form-label">Automark</label>
-        <BrandDropdown @event-brand-change="selectBrandId" @change="testMethod"/>
+        <BrandDropdown @event-brand-change="selectBrandId" />
         <small v-if="!newUser.carBrand && !formValid" class="text-danger">Automark on nõutud</small>
       </div>
       <div class="mt-2">
@@ -36,7 +35,7 @@
       </div>
       <div class="mt-2">
         <label for="carYear" class="form-label">Aasta</label>
-        <YearDropdown ref="modelYearDropdownRef" />
+        <YearDropdown ref="modelYearDropdownRef" @event-year-change="selectYearId"/>
         <small v-if="!newUser.carYear && !formValid" class="text-danger">Auto aasta on nõutud</small>
       </div>
     </div>
@@ -93,6 +92,12 @@ export default {
       this.$refs.modelYearDropdownRef.sendGetYearRequest()
     },
 
+    selectYearId(yearId) {
+      this.$refs.modelYearDropdownRef.yearId = yearId
+      this.newUser.carYear = yearId
+      this.$refs.modelYearDropdownRef.sendGetYearRequest()
+    },
+
     goToHomePage() {
       router.push({name: 'home'})
     },
@@ -118,9 +123,7 @@ export default {
         this.formValid = true;
       }
     },
-    testMethod() {
-      this.testVar=1
-    },
+
   }
 
 }
