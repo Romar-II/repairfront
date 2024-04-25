@@ -1,37 +1,51 @@
 <template>
   <div class="container justify-content-center">
     <h1>Registration Form</h1>
+    {{testVar}}
     <div class="mt-4 container text-start col-3">
-      <label for="username" class="form-label">Kasutajanimi</label>
-      <input v-model="username" type="username" class="form-control border border-success " id="username">
-
-      <label for="password" class="form-label">Parool</label>
-      <input v-model="password" type="password" class="form-control border border-success " id="password">
-
-      <label for="password" class="form-label">Parool uuesti</label>
-      <input v-model="passwordRepeat" type="password" class="form-control border border-success " id="password">
-
-      <label for="email" class="form-label">E-Mail</label>
-      <input v-model="email" type="email" class="form-control border border-success " id="password">
-
-      <BrandDropdown @event-brand-change="selectBrandId" class="mt-5"/>
-      <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" class="mt-3"/>
-      <YearDropdown ref="modelYearDropdownRef" class="mt-3"/>
-
-      <!--      <label for="carBrand" class="form-label">Automark</label>-->
-      <!--      <input v-model="carBrand" type="text" class="form-control border border-success " id="password">-->
-
-      <!--      <label for="carModel" class="form-label">Mudel</label>-->
-      <!--      <input v-model="carModel" type="text" class="form-control border border-success " id="password">-->
-    </div>
-    <div class="mt-4">
-      <button type="button" class="btn btn-success">Registreeri 50eur eest</button>
-      <div class="mt-4">
-        <a type="button" class="btn btn-danger" @click="goToHomePage" >Tühista</a>
+      <div class="mt-2">
+        <label for="username" class="form-label">Kasutajanimi</label>
+        <input v-model="newUser.username" type="username" class="form-control border border-success " id="username">
+        <small v-if="!newUser.username && !formValid" class="text-danger">Kasutajanimi on nõutud</small>
+      </div>
+      <div class="mt-2">
+        <label for="password" class="form-label">Parool</label>
+        <input v-model="newUser.password" type="password" class="form-control border border-success " id="password">
+        <small v-if="!newUser.password && !formValid" class="text-danger">Parool on nõutud</small>
+      </div>
+      <div class="mt-2">
+        <label for="password" class="form-label">Parool uuesti</label>
+        <input v-model="passwordRepeat" type="password" class="form-control border border-success " id="passwordRepeat">
+        <small v-if="!passwordRepeat && !formValid" class="text-danger">Parool uuesti on nõutud</small>
+        <small v-if="!passwordsMatch && passwordRepeat && !formValid" class="text-danger">Paroolid ei klapi</small>
+      </div>
+      <div class="mt-2">
+        <label for="email" class="form-label">E-Mail</label>
+        <input v-model="newUser.email" type="email" class="form-control border border-success " id="email">
+        <small v-if="!newUser.email && !formValid" class="text-danger">E-Mail on nõutud</small>
+      </div>
+      <div class="mt-5">
+        <label for="carBrand" class="form-label">Automark</label>
+        <BrandDropdown @event-brand-change="selectBrandId" @change="testMethod"/>
+        <small v-if="!newUser.carBrand && !formValid" class="text-danger">Automark on nõutud</small>
+      </div>
+      <div class="mt-2">
+        <label for="carModel" class="form-label">Auto mudel</label>
+        <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" />
+        <small v-if="!newUser.carModel && !formValid" class="text-danger">Mudel on nõutud</small>
+      </div>
+      <div class="mt-2">
+        <label for="carYear" class="form-label">Aasta</label>
+        <YearDropdown ref="modelYearDropdownRef" />
+        <small v-if="!newUser.carYear && !formValid" class="text-danger">Auto aasta on nõutud</small>
       </div>
     </div>
-
-
+    <div class="mt-4">
+      <button type="button" class="btn btn-success" @click="registerUser">Registreeri 50eur eest</button>
+      <div class="mt-4">
+        <a type="button" class="btn btn-danger" @click="goToHomePage">Tühista</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,12 +63,19 @@ export default {
   data() {
     return {
 
+      newUser: {
         username: '',
         password: '',
-        passwordRepeat:'',
         email: '',
         carBrand: '',
         carModel: '',
+        carYear: '',
+      },
+      passwordRepeat: '',
+      passwordsMatch: true,
+      formValid: true,
+      testVar: 0
+
 
 
     }
@@ -63,15 +84,42 @@ export default {
   methods: {
     selectBrandId(brandId) {
       this.$refs.modelDropdownRef.brandId = brandId
+      this.newUser.carBrand = brandId
       this.$refs.modelDropdownRef.sendGetModelRequest()
     },
     selectModelId(modelId) {
       this.$refs.modelYearDropdownRef.selectedModelId = modelId
+      this.newUser.carModel = modelId
       this.$refs.modelYearDropdownRef.sendGetYearRequest()
     },
 
     goToHomePage() {
-      router.push({name:'home'})
+      router.push({name: 'home'})
+    },
+    checkPasswordMatch() {
+      this.passwordsMatch = this.newUser.password === this.passwordRepeat
+      if (!this.passwordsMatch) {
+        return;
+      }
+    },
+
+    registerUser() {
+      this.validateForm();
+      if (!this.checkPasswordMatch()) {
+
+      }
+
+    },
+
+    validateForm() {
+      if (!this.username || !this.password || !this.passwordRepeat || !this.email || !this.carBrand || !this.carModel || !this.passwordsMatch) {
+        this.formValid = false;
+      } else {
+        this.formValid = true;
+      }
+    },
+    testMethod() {
+      this.testVar=1
     },
   }
 
