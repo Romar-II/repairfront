@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <div class="row">
-      <div class=" col text-white ">
+      <div class="col">
         <h1>Autoremondi pakkumine paari klikiga!</h1>
       </div>
       <div class="row">
