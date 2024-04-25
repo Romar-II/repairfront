@@ -10,12 +10,12 @@
           <div class="col">
             <AlertDanger :message="message"/>
             <div class="mb-3">
-              <label for="username" class="form-label">Kasutajanimi</label>
+              <label for="username" class="form-label ">Kasutajanimi</label>
               <input ref="usernameInput" v-model="username" type="text" class="input-focus form-control border border-success" id="username">
             </div>
             <div class="mb-4">
               <label for="password" class="form-label">Parool</label>
-              <input v-model="password" type="password" class="form-control border border-success" id="password">
+              <input v-model="password" type="password" class="form-control border border-success " id="password">
             </div>
           </div>
         </div>
