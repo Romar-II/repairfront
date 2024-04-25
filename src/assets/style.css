@@ -53,6 +53,11 @@ nav a.router-link-exact-active {
     background-color: #45a049; /* Darker Green */
 }
 .custom-font {
-    font-family: 'Arial Black', sans-serif; /* Example: Use Arial font */
-    color: #8fc1e0;
+    font-family: 'Bauhaus 93', "sans-serif"; /* Example: Use Arial font */
+    color: #89bcd0;
+}
+.navbar-brand,
+.nav-link {
+    color: #151f26; /* Change to your desired color */
+    font-family: 'Bauhaus 93', "sans-serif";
 }
