@@ -5,6 +5,7 @@
       <th scope="col">Item</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
+      <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +13,10 @@
       <td>{{product.productName}}</td>
       <td>{{ product.productPrice}}</td>
       <td>{{ product.qty }}</td>
+      <td>
+        <button @Click="addItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <button @Click="substractItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+      </td>
     </tr>
     </tbody>
     <thead />
@@ -95,6 +100,32 @@ export default {
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
+    },
+      addItemInstance(productId) {
+        this.$http.put("/cartitem/add", null, {
+              params: {
+                userId: this.userId,
+                productId: productId
+              }
+            }
+        ).then(response => {
+          const responseBody = response.data
+        }).catch(error => {
+          const errorResponseBody = error.response.data
+        })
+    },
+    substractItemInstance(productId) {
+        this.$http.put("/cartitem/substract", null, {
+              params: {
+                userId: this.userId,
+                productId: productId
+              }
+            }
+        ).then(response => {
+          const responseBody = response.data
+        }).catch(error => {
+          const errorResponseBody = error.response.data
+        })
     },
   },
   beforeMount() {
