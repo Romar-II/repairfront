@@ -15,11 +15,15 @@
       <label for="email" class="form-label">E-Mail</label>
       <input v-model="email" type="email" class="form-control border border-success " id="password">
 
-      <label for="carBrand" class="form-label">Automark</label>
-      <input v-model="carBrand" type="text" class="form-control border border-success " id="password">
+      <BrandDropdown @event-brand-change="selectBrandId" class="mt-5"/>
+      <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" class="mt-3"/>
+      <YearDropdown ref="modelYearDropdownRef" class="mt-3"/>
 
-      <label for="carModel" class="form-label">Mudel</label>
-      <input v-model="carModel" type="text" class="form-control border border-success " id="password">
+<!--      <label for="carBrand" class="form-label">Automark</label>-->
+<!--      <input v-model="carBrand" type="text" class="form-control border border-success " id="password">-->
+
+<!--      <label for="carModel" class="form-label">Mudel</label>-->
+<!--      <input v-model="carModel" type="text" class="form-control border border-success " id="password">-->
     </div>
     <div class="mt-4">
       <button>Registreeri 50eur eest</button>
@@ -31,8 +35,13 @@
 
 
   <script>
+    import BrandDropdown from "@/components/BrandDropdown.vue";
+    import ModelDropdown from "@/components/ModelDropdown.vue";
+    import YearDropdown from "@/components/YearDropdown.vue";
+
     export default {
       name: "RegistrationView",
+      components: {YearDropdown, ModelDropdown, BrandDropdown},
 
       data() {
         return{
@@ -45,6 +54,17 @@
 
         }
       },
+
+      methods:{
+        selectBrandId(brandId) {
+          this.$refs.modelDropdownRef.brandId = brandId
+          this.$refs.modelDropdownRef.sendGetModelRequest()
+        },
+        selectModelId(modelId) {
+          this.$refs.modelYearDropdownRef.selectedModelId = modelId
+          this.$refs.modelYearDropdownRef.sendGetYearRequest()
+        },
+      }
 
     }
   </script>
