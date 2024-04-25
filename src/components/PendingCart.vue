@@ -25,10 +25,10 @@
   </table>
 
   <div class="text-end me-4">
-  <button >
+  <button class="custom-button">
     Telli
   </button>
-  <button class="justify-content-end">
+  <button class="custom-button">
     Tühjenda korv
   </button>
   </div>
