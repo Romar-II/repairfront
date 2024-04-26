@@ -1,5 +1,8 @@
 <template>
   <div class="container justify-content-center">
+    <div class="mt-4">
+    <AlertSuccess :message="successMessage"/>
+    </div>
     <h1>Registration Form</h1>
     <div class="mt-4 container text-start col-3">
       <div class="mt-2">
@@ -53,7 +56,7 @@
       </div>
     </div>
     <div class="mt-4">
-      <button type="button" class="btn btn-success" @click="registerUser">Registreeri 50eur eest</button>
+      <button type="button" class="btn btn-success" @click="registerUser">Registreeri</button>
       <div class="mt-4">
         <a type="button" class="btn btn-danger" @click="goToHomePage">Tühista</a>
       </div>
@@ -67,10 +70,11 @@ import BrandDropdown from "@/components/BrandDropdown.vue";
 import ModelDropdown from "@/components/ModelDropdown.vue";
 import YearDropdown from "@/components/YearDropdown.vue";
 import router from "@/router";
+import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 
 export default {
   name: "RegistrationView",
-  components: {YearDropdown, ModelDropdown, BrandDropdown},
+  components: {AlertSuccess, YearDropdown, ModelDropdown, BrandDropdown},
 
   data() {
     return {
@@ -123,25 +127,18 @@ export default {
     checkPasswordMatch() {
       this.passwordsMatch = this.newUser.password === this.passwordRepeat
       if (!this.passwordsMatch) {
-        return;
       }
     },
 
     registerUser() {
-
-      if (this.validateForm() || !this.checkPasswordMatch() || !this.agreeTerms) {
+      this.validateForm()
+      if (!this.checkPasswordMatch() && this.agreeTerms) {
         this.sendPostNewUserRequest()
       }
-
-    },
-
-    showSuccessMessage() {
-      this.successMessage = 'Kasutaja "' + this.newUser.username + '" registreeritud!'
-      setTimeout(this.resetAlertMessages, 3000)
     },
 
     validateForm() {
-      if (!this.username || !this.password || !this.passwordRepeat || !this.email || !this.carBrand || !this.carModel || !this.passwordsMatch || !this.agreeTerms) {
+      if (!this.newUser.username || !this.newUser.password || !this.passwordRepeat || !this.newUser.email || !this.newUser.carBrand || !this.newUser.carModel || !this.passwordsMatch || !this.agreeTerms) {
         this.formValid = false;
       } else {
         this.formValid = true;
@@ -155,14 +152,29 @@ export default {
               password: this.newUser.password
             }
           }
-      ).then(response => {
-        this.showSuccessMessage = response.data
+      ).then(() => {
+        this.handlePostAtmLocationResponse()
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
+    },
+
+    handlePostAtmLocationResponse() {
+      this.showSuccessMessage()
+    },
+
+    showSuccessMessage() {
+      this.successMessage = 'Kasutaja "' + this.newUser.username + '" registreeritud!';
+      setTimeout(() => {
+        this.resetAlertMessages();
+        this.reloadApp();
+      }, 8000);
+    },
+
+    reloadApp() {
+      window.location.reload();
     }
-
-  }
-
+  },
 }
+
 </script>
