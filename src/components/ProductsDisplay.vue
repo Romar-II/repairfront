@@ -1,16 +1,6 @@
 <template>
-  <h>
-    {{testVar}}
-  </h>
 
-  <div class="d-flex justify-content-end me-3 mt-3">
-    <button class="btn btn-secondary btn-sm dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Mitu tk korraga
-    </button>
-    <ul class="dropdown-menu">
-      ...
-    </ul>
-  </div>
+
   <div v-if="this.magicNumber>0" class="product-grid">
     <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
       <div v-if="product.productId.valueOf()!==0" class="align-content-center">
