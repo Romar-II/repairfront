@@ -1,12 +1,11 @@
 <template>
   <div class="col-4">
 
-
     <div class="col">
       <div class="list-group text-center" id="list-tab" role="tablist">
 
         <div v-for="mainCategory in mainCategories">
-          <button class="list-group-item list-group-item-action btn" ata-bs-toggle="button" :key="mainCategory.categoryId"
+          <button class="list-group-item list-group-item-action btn" data-bs-toggle="button" :key="mainCategory.categoryId"
                   @click="handleMainCategory(mainCategory.categoryId)" :id="mainCategory.categoryId">
             {{ mainCategory.categoryName }}
           </button>

@@ -17,7 +17,7 @@
       <td>{{ product.qty }}</td>
       <td>{{product.productPrice*product.qty}}</td>
       <td>
-        <button class="button" @click="addItemInstance(product.productId, product.repairItemId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <button class="button me-md-2" @click="addItemInstance(product.productId, product.repairItemId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
         <button class="button" @click="substractItemInstance(product.productId, product.repairItemId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
       </td>
     </tr>

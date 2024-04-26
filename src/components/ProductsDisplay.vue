@@ -69,6 +69,7 @@ export default {
           }
       ).then(response => {
         this.products = response.data
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
