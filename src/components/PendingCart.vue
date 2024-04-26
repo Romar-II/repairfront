@@ -91,7 +91,8 @@ export default {
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -103,12 +104,13 @@ export default {
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
     },
-      addItemInstance(productId) {
+      addItemInstance(productId, repairItemId) {
       this.testVar=this.testVar+1
         this.$http.put("/cartitem/add", null, {
               params: {
@@ -118,24 +120,31 @@ export default {
               }
             }
         ).then(response => {
-          const responseBody = response.data
+          this.getCartItems()
+          this.emitUpdateCart()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
-    substractItemInstance(productId) {
-        this.$http.put("/cartitem/substract", null, {
+
+    substractItemInstance(productId, repairItemId) {
+      this.$http.delete("/cartitem/substract", {
               params: {
                 userId: this.userId,
-                productId: productId
+                productId: productId,
+                repairItemId: repairItemId,
               }
             }
         ).then(response => {
-          const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
+    emitUpdateCart(){
+      this.$emit("event-cart-changed")
+    }
   },
   beforeMount() {
     this.getCartItems()

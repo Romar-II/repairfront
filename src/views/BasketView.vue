@@ -2,34 +2,32 @@
   <div class="row">
 
     <div class="col-2 ms-5 mt-5">
-      <div class="d-grid gap-2">
-        <a>
-          <button href="" class="btn">
-            Ostukorv
-          </button>
-        </a>
-        <div>
-          <button class="btn">
-            Tellimused
-          </button>
-        </div>
-        <div>
-          <button class="btn">
-            Lisanupp
-          </button>
-        </div>
-        <div>
-          <button class="btn">
-            SAD
-          </button>
-        </div>
-
+      <a>
+        <button href="" class="btn">
+          Ostukorv
+        </button>
+      </a>
+      <div>
+        <button class="btn">
+          Tellimused
+        </button>
       </div>
+      <div>
+        <button class="btn">
+          Lisanupp
+        </button>
       </div>
-      <div class="col mt-5">
-        <PendingCart/>
+      <div>
+        <button class="btn">
+          SAD
+        </button>
       </div>
 
+
+    </div>
+    <div class="col mt-5">
+      <PendingCart @event-cart-changed="emitUpdateCart"/>
+    </div>
   </div>
 
 </template>
@@ -53,7 +51,7 @@ export default {
       cartItems: [
         {
           productId: 0,
-          repairItemId: 0,
+          repairItemId:0,
           price: 0,
           quantity: 0,
         }
