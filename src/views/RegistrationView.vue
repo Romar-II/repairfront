@@ -25,12 +25,12 @@
       </div>
       <div class="mt-5">
         <label for="carBrand" class="form-label">Automark</label>
-        <BrandDropdown @event-brand-change="selectBrandId" />
+        <BrandDropdown @event-brand-change="selectBrandId"/>
         <small v-if="!newUser.carBrand && !formValid" class="text-danger">Automark on nõutud</small>
       </div>
       <div class="mt-2">
         <label for="carModel" class="form-label">Auto mudel</label>
-        <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef" />
+        <ModelDropdown @event-model-change="selectModelId" ref="modelDropdownRef"/>
         <small v-if="!newUser.carModel && !formValid" class="text-danger">Mudel on nõutud</small>
       </div>
       <div class="mt-2">
@@ -87,7 +87,8 @@ export default {
       passwordsMatch: true,
       formValid: true,
       agreeTerms: false,
-
+      successMessage: '',
+      errorMessage: '',
 
 
     }
@@ -114,6 +115,11 @@ export default {
     goToHomePage() {
       router.push({name: 'home'})
     },
+
+    resetAlertMessages() {
+      this.errorMessage = ''
+      this.successMessage = ''
+    },
     checkPasswordMatch() {
       this.passwordsMatch = this.newUser.password === this.passwordRepeat
       if (!this.passwordsMatch) {
@@ -122,11 +128,16 @@ export default {
     },
 
     registerUser() {
-      this.validateForm();
-      if (!this.checkPasswordMatch() || !this.agreeTerms) {
 
+      if (this.validateForm() || !this.checkPasswordMatch() || !this.agreeTerms) {
+        this.sendPostNewUserRequest()
       }
 
+    },
+
+    showSuccessMessage() {
+      this.successMessage = 'Kasutaja "' + this.newUser.username + '" registreeritud!'
+      setTimeout(this.resetAlertMessages, 3000)
     },
 
     validateForm() {
@@ -136,6 +147,20 @@ export default {
         this.formValid = true;
       }
     },
+
+    sendPostNewUserRequest() {
+      this.$http.post("/registration", null, {
+            params: {
+              username: this.newUser.username,
+              password: this.newUser.password
+            }
+          }
+      ).then(response => {
+        this.showSuccessMessage = response.data
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    }
 
   }
 
