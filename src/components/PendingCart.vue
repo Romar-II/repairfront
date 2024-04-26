@@ -143,6 +143,7 @@ export default {
       this.$emit("event-cart-changed")
     },
     updateCartView(){
+      this.sortCartItems()
       this.getCartItems()
       this.emitUpdateCart()
     }
