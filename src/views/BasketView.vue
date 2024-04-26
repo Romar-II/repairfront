@@ -29,7 +29,7 @@
       <PendingCart/>
     </div>
   </div>
-  List asjadest
+
 </template>
 
 

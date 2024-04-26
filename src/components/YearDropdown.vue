@@ -1,7 +1,7 @@
 
 
 <template>
-  <select class="form-select" aria-label="Default select example">
+  <select class="form-select" aria-label="Default select example" @change="emitSelectedYearId">
     <option selected disabled hidden>Vali aasta</option>
     <option v-for="year in years" :value="year.yearId" :key="year.yearId" >{{year.yearNumber}}</option>
 
@@ -34,7 +34,11 @@ export default {
           .catch(error => {
             // const errorResponseJSON = error.response.data
           })
-    }
+    },
+
+    emitSelectedYearId() {
+      this.$emit(`event-year-change`, this.years)
+    },
 
   }
 }
