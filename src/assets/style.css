@@ -61,3 +61,82 @@ nav a.router-link-exact-active {
     color: #151f26; /* Change to your desired color */
     font-family: 'Bauhaus 93', "sans-serif";
 }
+.change-button:hover {
+    background-color: #45a049; /* Darker Green */
+}
+.custom-container {
+    background-color: rgb(255, 255, 255); /* Light Gray Background with opacity */
+    border: 2px solid #45aee6; /* Border */
+    border-radius: 8px; /* Rounded Corners */
+    padding: 20px; /* Padding */
+    margin-top: 20px; /* Margin Top */
+}
+
+.custom-container2 {
+    background-color: rgb(13, 109, 251); /* Light Gray Background with opacity */
+    border: 5px solid #45ade5; /* Border */
+    border-radius: 8px; /* Rounded Corners */
+    padding: 20px; /* Padding */
+    margin-top: 20px; /* Margin Top */
+    .text-white{
+        color:white;
+    }
+    .text-black{
+        color: black;
+    }
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+
+}
+button {
+    background:#0D6EFD;
+    border: 0px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: black;
+    font-size: 14px;
+
+}
+#products {
+
+    grid-gap: 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    background-color: white;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1051;
+}
+
+/* Custom styles */
+.custom-btn-close {
+    background-color: #8a7e7e; /* Button background color */
+    color: #fff; /* Button text color */
+}
+
+.custom-modal-footer {
+    background-color: #e9ecef; /* Footer background color */
+}
+
+/* Customize inputs and labels */
+.modal-body input[type="text"],
+.modal-body input[type="password"],
+.modal-body label {
+    color: #495057; /* Input and label text color */
+    border-color: #ced4da; /* Input border color */
+}
+
+.modal-body input[type="text"]:focus,
+.modal-body input[type="password"]:focus {
+    border-color: #80bdff; /* Input border color on focus */
+}
+

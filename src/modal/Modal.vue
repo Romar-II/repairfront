@@ -76,35 +76,5 @@ export default {
 </script>
 
 <style scoped>
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1051;
-}
-
-/* Custom styles */
-.custom-btn-close {
-  background-color: #8a7e7e; /* Button background color */
-  color: #fff; /* Button text color */
-}
-
-.custom-modal-footer {
-  background-color: #e9ecef; /* Footer background color */
-}
-
-/* Customize inputs and labels */
-.modal-body input[type="text"],
-.modal-body input[type="password"],
-.modal-body label {
-  color: #495057; /* Input and label text color */
-  border-color: #ced4da; /* Input border color */
-}
-
-.modal-body input[type="text"]:focus,
-.modal-body input[type="password"]:focus {
-  border-color: #80bdff; /* Input border color on focus */
-}
 
 </style>
