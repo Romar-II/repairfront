@@ -61,3 +61,6 @@ nav a.router-link-exact-active {
     color: #151f26; /* Change to your desired color */
     font-family: 'Bauhaus 93', "sans-serif";
 }
+.change-button:hover {
+    background-color: #45a049; /* Darker Green */
+}
