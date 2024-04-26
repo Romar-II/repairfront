@@ -26,7 +26,7 @@ nav {
 }
 nav a {
     font-weight: bold;
-    color: #2593e0;
+    color: #8b98a6;
 }
 nav a.router-link-exact-active {
     color: #4cb2f3;
@@ -51,4 +51,13 @@ nav a.router-link-exact-active {
 
 .custom-button:hover {
     background-color: #45a049; /* Darker Green */
+}
+.custom-font {
+    font-family: 'Bauhaus 93', "sans-serif"; /* Example: Use Arial font */
+    color: #89bcd0;
+}
+.navbar-brand,
+.nav-link {
+    color: #151f26; /* Change to your desired color */
+    font-family: 'Bauhaus 93', "sans-serif";
 }

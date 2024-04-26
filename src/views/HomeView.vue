@@ -3,7 +3,7 @@
   <div class="text-center">
     <div class="row">
       <div class="col">
-        <h1>Autoremondi pakkumine paari klikiga!</h1>
+        <h1 class="custom-font"> Autoremondi pakkumine paari klikiga...</h1>
       </div>
       <div class="row">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 30%;">

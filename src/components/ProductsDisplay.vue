@@ -74,8 +74,8 @@ export default {
       })
     },
 
-    sendPostNewItemInCartRequest(productId) {
-      this.$http.post("/cart", null, {
+    async sendPostNewItemInCartRequest(productId) {
+      await this.$http.post("/cart", null, {
             params: {
               userId: 1,
               productId: productId
