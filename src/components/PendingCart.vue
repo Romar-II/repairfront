@@ -1,5 +1,5 @@
 <template>
-  <table class="table">
+  <table v-if="sum>0" class="table">
     <thead>
     {{testVar}}
     <tr>
@@ -36,11 +36,11 @@
   </table>
 
   <div class="text-end me-4">
-  <button class="custom-button" @click="handleOrderClick">
+  <button v-if="sum>0" class="custom-button" @click="handleOrderClick">
 
     Telli
   </button>
-  <button @click="handleEmptyBasketClick" class="custom-button">
+  <button v-if="sum>0" @click="handleEmptyBasketClick" class="custom-button">
     Tühjenda korv
   </button>
   </div>
