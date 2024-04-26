@@ -91,8 +91,8 @@ export default {
             }
           }
       ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -104,8 +104,7 @@ export default {
             }
           }
       ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -120,8 +119,7 @@ export default {
               }
             }
         ).then(response => {
-          this.getCartItems()
-          this.emitUpdateCart()
+          this.updateCartView()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
@@ -136,14 +134,17 @@ export default {
               }
             }
         ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
     emitUpdateCart(){
       this.$emit("event-cart-changed")
+    },
+    updateCartView(){
+      this.getCartItems()
+      this.emitUpdateCart()
     }
   },
   beforeMount() {

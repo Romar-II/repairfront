@@ -68,6 +68,9 @@ export default {
             const errorResponseBody = error.response.data
           })
     },
+    emitUpdateCart(){
+      this.$emit("event-cart-changed")
+    }
   },
   beforeMount() {
     this.getCartItems()
