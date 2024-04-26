@@ -11,7 +11,7 @@
       ...
     </ul>
   </div>
-  <div class="product-grid">
+  <div v-if="this.magicNumber>0" class="product-grid">
     <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
       <div v-if="product.productId.valueOf()!==0" class="align-content-center">
         <div>
@@ -45,7 +45,7 @@ export default {
   name: "ProductsDisplay",
   data(){
     return{
-      testVar:0,
+      magicNumber:0,
       products: [
         {
           productId: 0,
@@ -69,6 +69,7 @@ export default {
           }
       ).then(response => {
         this.products = response.data
+        this.magicNumber=1
 
       }).catch(error => {
         const errorResponseBody = error.response.data
@@ -84,6 +85,7 @@ export default {
           }
       ).then(response => {
         this.handleItemAddedInCart()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
