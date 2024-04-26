@@ -17,8 +17,8 @@
       <td>{{ product.qty }}</td>
       <td>{{product.productPrice*product.qty}}</td>
       <td>
-        <button class="btn" @click="addItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
-        <button class="btn" @click="substractItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+        <button class="btn" @click="addItemInstance(product.productId, product.repairItemId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <button class="btn" @click="substractItemInstance(product.productId, product.repairItemId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
       </td>
     </tr>
     </tbody>
@@ -113,7 +113,8 @@ export default {
         this.$http.put("/cartitem/add", null, {
               params: {
                 userId: this.userId,
-                productId: productId
+                productId: productId,
+                repairItemId: repairItemId
               }
             }
         ).then(response => {
