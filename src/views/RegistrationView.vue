@@ -2,8 +2,9 @@
   <div class="container justify-content-center">
     <div class="mt-4">
     <AlertSuccess :message="successMessage"/>
+      <AlertDanger :message="errorMessage"/>
     </div>
-    <h1>Registration Form</h1>
+    <h1>Registreeri kasutaja</h1>
     <div class="mt-4 container text-start col-3">
       <div class="mt-2">
         <label for="username" class="form-label">Kasutajanimi</label>
@@ -71,10 +72,11 @@ import ModelDropdown from "@/components/ModelDropdown.vue";
 import YearDropdown from "@/components/YearDropdown.vue";
 import router from "@/router";
 import AlertSuccess from "@/components/alert/AlertSuccess.vue";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
 
 export default {
   name: "RegistrationView",
-  components: {AlertSuccess, YearDropdown, ModelDropdown, BrandDropdown},
+  components: {AlertDanger, AlertSuccess, YearDropdown, ModelDropdown, BrandDropdown},
 
   data() {
     return {
@@ -125,15 +127,21 @@ export default {
       this.successMessage = ''
     },
     checkPasswordMatch() {
-      this.passwordsMatch = this.newUser.password === this.passwordRepeat
-      if (!this.passwordsMatch) {
+      if (this.newUser.password === this.passwordRepeat) {
+        this.passwordsMatch = true;
+      } else {
+        this.passwordsMatch = false;
       }
     },
 
+
     registerUser() {
-      this.validateForm()
-      if (!this.checkPasswordMatch() && this.agreeTerms) {
-        this.sendPostNewUserRequest()
+      this.checkPasswordMatch()
+      this.validateForm();
+      if (this.formValid && this.passwordsMatch && this.agreeTerms) {
+        this.sendPostNewUserRequest();
+      } else {
+        this.showErrorMessage()
       }
     },
 
@@ -155,7 +163,7 @@ export default {
       ).then(() => {
         this.handlePostAtmLocationResponse()
       }).catch(() => {
-        router.push({name: 'errorRoute'})
+        this.showErrorMessage()
       })
     },
 
@@ -164,11 +172,17 @@ export default {
     },
 
     showSuccessMessage() {
-      this.successMessage = 'Kasutaja "' + this.newUser.username + '" registreeritud!';
+      this.successMessage = 'Õnnitleme! Kasutaja "' + this.newUser.username + '" registreeritud!';
       setTimeout(() => {
         this.resetAlertMessages();
         this.reloadApp();
-      }, 8000);
+      }, 5000);
+    },
+    showErrorMessage() {
+      this.errorMessage = 'Midagi läks valesti';
+      setTimeout(() => {
+        this.resetAlertMessages();
+      }, 3000);
     },
 
     reloadApp() {
