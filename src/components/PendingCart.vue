@@ -1,11 +1,13 @@
 <template>
   <table class="table">
     <thead>
+    {{testVar}}
     <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col"></th>
+      <th scope="col">Kaup</th>
+      <th scope="col">Hind</th>
+      <th scope="col">Kogus</th>
+      <th scope="col">Vahesumma</th>
+      <th scope="col">Muuda kogust</th>
     </tr>
     </thead>
     <tbody>
@@ -13,9 +15,10 @@
       <td>{{product.productName}}</td>
       <td>{{ product.productPrice}}</td>
       <td>{{ product.qty }}</td>
+      <td>{{product.productPrice*product.qty}}</td>
       <td>
-        <button @Click="addItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
-        <button @Click="substractItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+        <button class="btn" @click="addItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <button class="btn" @click="substractItemInstance(product.productId)"><font-awesome-icon :icon="['fas', 'minus']" /></button>
       </td>
     </tr>
     </tbody>
@@ -23,8 +26,11 @@
     <tbody>
     <tr>
       <td></td>
+      <td></td>
       <th>Kokku:</th>
       <td>{{sum}}</td>
+      <td></td>
+
     </tr>
     </tbody>
   </table>
@@ -45,6 +51,7 @@ export default {
   name: "PendingCart",
   data(){
     return{
+      testVar:0,
       userId:1,
       // userId: sessionStorage.getItem('userId'),
       cartItems: [
@@ -102,6 +109,7 @@ export default {
       })
     },
       addItemInstance(productId) {
+      this.testVar=this.testVar+1
         this.$http.put("/cartitem/add", null, {
               params: {
                 userId: this.userId,
