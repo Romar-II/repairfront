@@ -5,7 +5,10 @@
     <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
       <div v-if="product.productId.valueOf()!==0" class="align-content-center">
         <div>
-          <img src="../assets/default-product.30484205.png" height="200" width="200"/>
+          <img v-if="imageData === ''" src="../assets/default-product.30484205.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
+          <img v-else :src="product.productImageData" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
+
+          <img src="" height="200" width="200"/>
         </div>
         <div>
           {{ product.productImageData }}
