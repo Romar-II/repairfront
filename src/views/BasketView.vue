@@ -26,7 +26,7 @@
 
     </div>
     <div class="col mt-5">
-      <PendingCart/>
+      <PendingCart @event-cart-changed="emitUpdateCart"/>
     </div>
   </div>
 
@@ -68,6 +68,9 @@ export default {
             const errorResponseBody = error.response.data
           })
     },
+    emitUpdateCart(){
+      this.$emit("event-cart-changed")
+    }
   },
   beforeMount() {
     this.getCartItems()

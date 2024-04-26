@@ -91,7 +91,8 @@ export default {
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -103,7 +104,8 @@ export default {
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -119,12 +121,14 @@ export default {
             }
         ).then(response => {
           this.getCartItems()
+          this.emitUpdateCart()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
+
     substractItemInstance(productId, repairItemId) {
-        this.$http.delete("/cartitem/substract", null, {
+      this.$http.delete("/cartitem/substract", {
               params: {
                 userId: this.userId,
                 productId: productId,
@@ -132,11 +136,15 @@ export default {
               }
             }
         ).then(response => {
-          const responseBody = response.data
+        this.getCartItems()
+        this.emitUpdateCart()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
+    emitUpdateCart(){
+      this.$emit("event-cart-changed")
+    }
   },
   beforeMount() {
     this.getCartItems()
