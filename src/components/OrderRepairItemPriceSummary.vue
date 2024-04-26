@@ -18,27 +18,7 @@
 
 <style>
 
-.custom-container {
-  background-color: rgb(255, 255, 255); /* Light Gray Background with opacity */
-  border: 2px solid #45aee6; /* Border */
-  border-radius: 8px; /* Rounded Corners */
-  padding: 20px; /* Padding */
-  margin-top: 20px; /* Margin Top */
-}
 
-.custom-container2 {
-  background-color: rgb(13, 109, 251); /* Light Gray Background with opacity */
-  border: 5px solid #45ade5; /* Border */
-  border-radius: 8px; /* Rounded Corners */
-  padding: 20px; /* Padding */
-  margin-top: 20px; /* Margin Top */
-  .text-white{
-    color:white;
-  }
-  .text-black{
-    color: black;
-  }
-}
 </style>
 <script>
 export default {
