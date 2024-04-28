@@ -5,13 +5,11 @@
     <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
       <div v-if="product.productId.valueOf()!==0" class="align-content-center">
         <div>
-          <img v-if="imageData === ''" src="../assets/default-product.30484205.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
-          <img v-else :src="product.productImageData" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
+<!--          <img v-if="product.productImage === ''" class="img-fluid" src="" alt="Ürituse pilt1 rida"/>-->
+<!--          <img v-else class="img-fluid event-image-control" :src="product.productImage" alt="Ürituse pilt 2 rida"/>-->
 
-          <img src="" height="200" width="200"/>
-        </div>
-        <div>
-          {{ product.productImageData }}
+          <img v-if="product.productImage === null" src="../assets/default-product.30484205.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
+          <img v-else :src="product.productImage" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
         </div>
         <div >
           {{ product.productName }}
@@ -38,6 +36,7 @@ export default {
   name: "ProductsDisplay",
   data(){
     return{
+
       magicNumber:0,
       products: [
         {
@@ -45,7 +44,7 @@ export default {
           productName: '',
           productPrice: 0.00,
           productDescription: '',
-          productImageData: '',
+          productImage: '',
         }
       ],
 
