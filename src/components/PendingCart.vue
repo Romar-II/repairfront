@@ -79,6 +79,7 @@ export default {
           })
     },
     sortCartItems(){
+      this.cartItems.sort((a, b) => a.productId - b.productId)
       this.cartItems.sort((a, b) => a.repairItemId - b.repairItemId)
     },
     calculateSum(){
@@ -105,6 +106,7 @@ export default {
           }
       ).then(response => {
         this.updateCartView()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -146,7 +148,10 @@ export default {
       this.sortCartItems()
       this.getCartItems()
       this.emitUpdateCart()
-    }
+    },
+    reloadApp() {
+      window.location.reload();
+    },
   },
   beforeMount() {
     this.getCartItems()
