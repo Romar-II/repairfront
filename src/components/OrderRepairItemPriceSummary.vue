@@ -46,7 +46,6 @@ export default {
 
     handleRepairItemAddedInCart(repairItemId) {
       this.addItemToCart(repairItemId)
-      this.$emit('event-cart-change')
     },
     addItemToCart(repairItemId) {
       this.$http.post("/cart/repairitem", null, {
@@ -56,7 +55,7 @@ export default {
             }
           }
       ).then(response => {
-        const responseBody = response.data
+        this.$emit('event-cart-change')
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
