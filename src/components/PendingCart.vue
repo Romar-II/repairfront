@@ -52,7 +52,7 @@ export default {
   data(){
     return{
       testVar:0,
-      userId:1,
+      userId: sessionStorage.getItem('userId'),
       // userId: sessionStorage.getItem('userId'),
       cartItems: [
         {

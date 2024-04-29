@@ -60,7 +60,7 @@ export default {
     return {
       numberOfItemsInCart: 0,
       testVar: 0,
-      userId: 1,
+      userId: sessionStorage.getItem('userId'),
       isLoggedIn: false,
       isAdmin: false,
     }
@@ -79,6 +79,7 @@ export default {
       router.push({name: 'basketRoute'})
     },
     updateCart() {
+      this.userId=sessionStorage.getItem('userId')
       this.$http.get(`/cart/update/${this.userId}`)
           .then(response => {
             this.numberOfItemsInCart = response.data

@@ -51,7 +51,7 @@ export default {
       choice:1,
       productAddedToCart: 0,
       productsIds: [1, 2, 3, 4, 5],
-      userId: 1,
+      userId: sessionStorage.getItem('userId'),
       // userId: sessionStorage.getItem('userId'),
       cartItems: [
         {

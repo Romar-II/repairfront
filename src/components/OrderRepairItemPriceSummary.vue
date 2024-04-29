@@ -51,7 +51,7 @@ export default {
     addItemToCart(repairItemId) {
       this.$http.post("/cart/repairitem", null, {
             params: {
-              userId: 1,
+              userId: sessionStorage.getItem('userId'),
               repairItemId: repairItemId
             }
           }

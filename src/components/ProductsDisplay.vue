@@ -36,7 +36,7 @@ export default {
   name: "ProductsDisplay",
   data(){
     return{
-
+      userId: sessionStorage.getItem('userId'),
       magicNumber:0,
       products: [
         {
@@ -71,7 +71,7 @@ export default {
     async sendPostNewItemInCartRequest(productId) {
       await this.$http.post("/cart", null, {
             params: {
-              userId: 1,
+              userId: this.userId,
               productId: productId
             }
           }
