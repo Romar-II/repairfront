@@ -22,13 +22,14 @@ export default {
 
   methods: {
     executeLogOut() {
-      sessionStorage.clear()
-      this.$emit('event-update-nav-menu')
-      this.$emit('event-cart-changed')
-      this.$refs.modalRef.closeModal()
-      this.reloadApp()
-      router.push({name: 'home'})
-
+      sessionStorage.clear();
+      this.$emit('event-update-nav-menu');
+      this.$emit('event-cart-changed');
+      this.$refs.modalRef.closeModal();
+      router.push({ name: 'home' })
+          .then(() => {
+            this.reloadApp();
+          });
     },
 
     reloadApp() {
