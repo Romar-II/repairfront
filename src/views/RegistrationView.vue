@@ -182,7 +182,7 @@ export default {
       this.errorMessage = 'Võta kokku end ja täida ilusti!';
       setTimeout(() => {
         this.resetAlertMessages();
-      }, 3000);
+      }, 4000);
     },
 
     reloadApp() {

@@ -19,24 +19,20 @@ export default {
   props: {
 
   },
-  mounted() {
-    document.addEventListener('keydown', this.handleEnterKeyDown);
-  },
-  beforeUnmount() {
-    document.removeEventListener('keydown', this.handleEnterKeyDown);
-  },
+
   methods: {
     executeLogOut() {
       sessionStorage.clear()
       this.$emit('event-update-nav-menu')
+      this.$emit('event-cart-changed')
       this.$refs.modalRef.closeModal()
       router.push({name: 'home'})
+      this.reloadApp()
     },
-    handleEnterKeyDown(event) {
-      if (event.key === 'Enter' && this.$refs.modalRef.isOpen) {
-        this.executeLogOut();
-      }
-    }
-  }
+
+    reloadApp() {
+      window.location.reload();
+    },
+  },
 }
 </script>

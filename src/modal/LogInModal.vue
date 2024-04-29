@@ -94,9 +94,11 @@ export default {
     handleLoginRequestResponse() {
       this.saveLoginResponseInfoToSessionStorage()
       this.$emit('event-update-nav-menu')
+      this.$emit('event-cart-changed')
       this.resetAllInputFields();
       this.$refs.modalRef.closeModal()
       router.push({name: 'home'})
+
     },
 
     saveLoginResponseInfoToSessionStorage() {
