@@ -1,7 +1,6 @@
 <template>
   <table v-if="sum>0" class="table">
     <thead>
-    {{testVar}}
     <tr>
       <th scope="col">Kaup</th>
       <th scope="col">Hind</th>

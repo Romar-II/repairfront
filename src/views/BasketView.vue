@@ -28,7 +28,7 @@
       <OrdersHistory/>
     </div>
     <div v-if="choice===3" class="col mt-5">
-      <OrdersHistory/>
+      Under construction
     </div>
   </div>
 
