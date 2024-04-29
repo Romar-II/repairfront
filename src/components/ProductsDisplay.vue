@@ -44,7 +44,7 @@ export default {
           productName: '',
           productPrice: 0.00,
           productDescription: '',
-          productImage: '',
+          productImage: null,
         }
       ],
 

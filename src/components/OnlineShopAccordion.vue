@@ -18,11 +18,7 @@
           </div>
         </div>
       </div>
-      {{ selectedCategoryId }}
-      {{ selectedSubCategoryId }}
-
-
-    </div>
+     </div>
   </div>
 </template>
 
