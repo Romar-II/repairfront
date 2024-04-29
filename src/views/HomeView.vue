@@ -8,16 +8,16 @@
       <div class="row">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 30%;">
           <div class="carousel-i">
-            <div class="carousel-item active" data-bs-interval="4000">
+            <div class="carousel-item active" data-bs-interval="3000">
               <img src="../assets/pilt1.png" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item" data-bs-interval="4000">
+            <div class="carousel-item" data-bs-interval="3000">
               <img src="../assets/pilt2.png" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item" data-bs-interval="4000">
+            <div class="carousel-item" data-bs-interval="3000">
               <img src="../assets/pilt3.png" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item" data-bs-interval="4000">
+            <div class="carousel-item" data-bs-interval="3000">
               <img src="../assets/vaade1.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
