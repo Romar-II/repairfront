@@ -38,8 +38,8 @@ export default {
 
   methods: {
 
-    sendGetRepairItemCategoryRequest() {
-      this.$http.get(`/repair/itemcategories/${this.selectedRepairSubCategoryId}`)
+    async sendGetRepairItemCategoryRequest() {
+      await this.$http.get(`/repair/itemcategories/${this.selectedRepairSubCategoryId}`)
           .then(response => {
             this.repairItemCategories = response.data
           })

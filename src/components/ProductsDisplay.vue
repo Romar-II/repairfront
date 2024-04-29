@@ -9,7 +9,7 @@
 <!--          <img v-else class="img-fluid event-image-control" :src="product.productImage" alt="Ürituse pilt 2 rida"/>-->
 
           <img v-if="product.productImage === null" src="../assets/default-product.30484205.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
-          <img v-else :src="product.productImage" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
+          <img v-else :src="product.productImage" class="img-thumbnail" alt="pilt mis peaks siin olema">
         </div>
         <div >
           {{ product.productName }}
