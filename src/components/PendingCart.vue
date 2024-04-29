@@ -1,5 +1,5 @@
 <template>
-  <table class="table">
+  <table v-if="sum>0" class="table">
     <thead>
     {{testVar}}
     <tr>
@@ -36,11 +36,11 @@
   </table>
 
   <div class="text-end me-4">
-  <button class="custom-button" @click="handleOrderClick">
+  <button v-if="sum>0" class="custom-button" @click="handleOrderClick">
 
     Telli
   </button>
-  <button @click="handleEmptyBasketClick" class="custom-button">
+  <button v-if="sum>0" @click="handleEmptyBasketClick" class="custom-button">
     Tühjenda korv
   </button>
   </div>
@@ -52,7 +52,7 @@ export default {
   data(){
     return{
       testVar:0,
-      userId:1,
+      userId: sessionStorage.getItem('userId'),
       // userId: sessionStorage.getItem('userId'),
       cartItems: [
         {
@@ -79,6 +79,7 @@ export default {
           })
     },
     sortCartItems(){
+      this.cartItems.sort((a, b) => a.productId - b.productId)
       this.cartItems.sort((a, b) => a.repairItemId - b.repairItemId)
     },
     calculateSum(){
@@ -91,8 +92,8 @@ export default {
             }
           }
       ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -104,8 +105,8 @@ export default {
             }
           }
       ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })
@@ -120,8 +121,7 @@ export default {
               }
             }
         ).then(response => {
-          this.getCartItems()
-          this.emitUpdateCart()
+          this.updateCartView()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
@@ -136,15 +136,22 @@ export default {
               }
             }
         ).then(response => {
-        this.getCartItems()
-        this.emitUpdateCart()
+        this.updateCartView()
         }).catch(error => {
           const errorResponseBody = error.response.data
         })
     },
     emitUpdateCart(){
       this.$emit("event-cart-changed")
-    }
+    },
+    updateCartView(){
+      this.sortCartItems()
+      this.getCartItems()
+      this.emitUpdateCart()
+    },
+    reloadApp() {
+      window.location.reload();
+    },
   },
   beforeMount() {
     this.getCartItems()

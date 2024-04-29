@@ -1,24 +1,15 @@
 <template>
-  <h>
-    {{testVar}}
-  </h>
 
-  <div class="d-flex justify-content-end me-3 mt-3">
-    <button class="btn btn-secondary btn-sm dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Mitu tk korraga
-    </button>
-    <ul class="dropdown-menu">
-      ...
-    </ul>
-  </div>
-  <div class="product-grid">
+
+  <div v-if="this.magicNumber>0" class="product-grid">
     <div id="products" v-for="product in products"  class="col text-center" :key="product.productId">
       <div v-if="product.productId.valueOf()!==0" class="align-content-center">
         <div>
-          <img src="../assets/default-product.30484205.png" height="200" width="200"/>
-        </div>
-        <div>
-          {{ product.productImageData }}
+<!--          <img v-if="product.productImage === ''" class="img-fluid" src="" alt="Ürituse pilt1 rida"/>-->
+<!--          <img v-else class="img-fluid event-image-control" :src="product.productImage" alt="Ürituse pilt 2 rida"/>-->
+
+          <img v-if="product.productImage === null" src="../assets/default-product.30484205.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
+          <img v-else :src="product.productImage" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
         </div>
         <div >
           {{ product.productName }}
@@ -45,14 +36,15 @@ export default {
   name: "ProductsDisplay",
   data(){
     return{
-      testVar:0,
+      userId: sessionStorage.getItem('userId'),
+      magicNumber:0,
       products: [
         {
           productId: 0,
           productName: '',
           productPrice: 0.00,
           productDescription: '',
-          productImageData: '',
+          productImage: '',
         }
       ],
 
@@ -69,6 +61,7 @@ export default {
           }
       ).then(response => {
         this.products = response.data
+        this.magicNumber=1
 
       }).catch(error => {
         const errorResponseBody = error.response.data
@@ -78,12 +71,13 @@ export default {
     async sendPostNewItemInCartRequest(productId) {
       await this.$http.post("/cart", null, {
             params: {
-              userId: 1,
+              userId: this.userId,
               productId: productId
             }
           }
       ).then(response => {
         this.handleItemAddedInCart()
+
       }).catch(error => {
         const errorResponseBody = error.response.data
       })

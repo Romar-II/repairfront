@@ -179,7 +179,7 @@ export default {
       }, 5000);
     },
     showErrorMessage() {
-      this.errorMessage = 'Midagi läks valesti';
+      this.errorMessage = 'Võta kokku end ja täida ilusti!';
       setTimeout(() => {
         this.resetAlertMessages();
       }, 3000);

@@ -3,30 +3,32 @@
 
     <div class="col-2 ms-5 mt-5">
       <a>
-        <button href="" class="btn">
+        <button @click="choice=1" href="" class="btn">
           Ostukorv
         </button>
       </a>
       <div>
-        <button class="btn">
-          Tellimused
+        <button @click="choice=2" class="btn">
+          Coming soon...
         </button>
       </div>
       <div>
-        <button class="btn">
-          Lisanupp
+        <button @click="choice=3" class="btn">
+          Coming soon...
         </button>
       </div>
-      <div>
-        <button class="btn">
-          SAD
-        </button>
-      </div>
+
 
 
     </div>
-    <div class="col mt-5">
+    <div v-if="choice===1" class="col mt-5">
       <PendingCart @event-cart-changed="emitUpdateCart"/>
+    </div>
+    <div v-if="choice===2" class="col mt-5">
+      <OrdersHistory/>
+    </div>
+    <div v-if="choice===3" class="col mt-5">
+      <OrdersHistory/>
     </div>
   </div>
 
@@ -37,21 +39,24 @@
 
 
 import PendingCart from "@/components/PendingCart.vue";
+import OrdersHistory from "@/components/OrdersHistory.vue";
+import OrderRepairItemPriceSummary from "@/components/OrderRepairItemPriceSummary.vue";
 
 export default {
   name: "BasketView",
-  components: {PendingCart},
+  components: {OrdersHistory, OrderRepairItemPriceSummary, PendingCart},
 
   data() {
     return {
+      choice:1,
       productAddedToCart: 0,
       productsIds: [1, 2, 3, 4, 5],
-      userId: 1,
+      userId: sessionStorage.getItem('userId'),
       // userId: sessionStorage.getItem('userId'),
       cartItems: [
         {
           productId: 0,
-          repairItemId:0,
+          repairItemId: 0,
           price: 0,
           quantity: 0,
         }
@@ -68,6 +73,9 @@ export default {
             const errorResponseBody = error.response.data
           })
     },
+    emitUpdateCart() {
+      this.$emit("event-cart-changed")
+    }
   },
   beforeMount() {
     this.getCartItems()
